@@ -1,0 +1,27 @@
+<img src='fondo.png' alt="" class="fondo">
+<form class="formulario-login" (ngSubmit)="entrar()">
+    <div class="contenedorform">
+        <img src="logo.png" alt="" class="logo">
+    <div class="contenedorInputs">
+        <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" class="form-control" [(ngModel)]="loginObj.email" id="email" placeholder="Enter email">
+    </div>
+    <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" class="form-control" [(ngModel)]="loginObj.password" id="password" placeholder="Enter password">
+    </div>
+    </div>
+    <div class="opciones">
+        <div class="rememberme">
+          <label class="checkbox-container">
+            <input type="checkbox" id="remember" checked />
+            <div class="checkmark"></div>
+          </label>
+          <label for="remember">Recuérdame</label>
+        </div>
+        <span>¿Olvidaste tu contraseña?</span>
+      </div>
+    <button type="submit" class="boton-login">Ingresar</button>
+    </div>
+</form>
