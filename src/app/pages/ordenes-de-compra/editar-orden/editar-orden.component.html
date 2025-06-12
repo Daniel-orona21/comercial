@@ -1,0 +1,172 @@
+<div class="container-fluid">
+    <div class="card">
+        <div class="card-header">
+            <h1 class="card-title">Editar orden</h1>
+            <div class="tabs">
+                <button class="tab-button" [class.active]="activeTab === 'solicitud'" (click)="setTab('solicitud')">
+                    <span class="material-symbols-outlined">description</span> Solicitud
+                </button>
+                <button class="tab-button" [class.active]="activeTab === 'surtir'" (click)="setTab('surtir')">
+                    <span class="material-symbols-outlined">local_shipping</span> Surtir
+                </button>
+                <button class="tab-button" [class.active]="activeTab === 'validar'" (click)="setTab('validar')">
+                    <span class="material-symbols-outlined">check_circle</span> Validar
+                </button>
+            </div>
+            <div class="id-badge">
+                <span>ID: 21</span>
+            </div>
+        </div>
+        <div class="card-body">
+            <ng-container *ngIf="activeTab === 'surtir'">
+                <form class="form-container">
+                    <div class="form-grid">
+                        <div class="form-field">
+                            <label for="fecha-solicitud">Fecha de solicitud</label>
+                            <input type="text" id="fecha-solicitud" value="23/05/2025" readonly>
+                        </div>
+                        <div class="form-field">
+                            <label for="numero-compra">Numero de compra</label>
+                            <input type="text" id="numero-compra" readonly>
+                        </div>
+                        <div class="form-field">
+                            <label for="sucursal">Sucursal</label>
+                            <input type="text" id="sucursal" readonly>
+                        </div>
+                        <div class="form-field">
+                            <label for="proveedor">Proveedor</label>
+                            <input type="text" id="proveedor" readonly>
+                        </div>
+                        <div class="form-field">
+                            <label for="area-solicitante">Area solicitante</label>
+                            <input type="text" id="area-solicitante" readonly>
+                        </div>
+                        <div class="form-field">
+                            <label for="tipo-pago">Tipo de pago</label>
+                            <input type="text" id="tipo-pago" readonly>
+                        </div>
+                        <div class="form-field">
+                            <label for="responsable-compra">Responsable de la compra</label>
+                            <input type="text" id="responsable-compra" readonly>
+                        </div>
+                        <div class="form-field">
+                            <label for="estatus">Estatus</label>
+                            <input type="text" id="estatus" readonly>
+                        </div>
+                    </div>
+                </form>
+                <div class="table-container">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Item</th>
+                                <th>SKU</th>
+                                <th>Descripción</th>
+                                <th>Unidad de medida</th>
+                                <th>Cantidad</th>
+                                <th>Precio unitario</th>
+                                <th>Cantidad a surtir</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Acido hialuronico</td>
+                                <td>AC002D</td>
+                                <td>Acido hialuronico 50ml</td>
+                                <td>PZ</td>
+                                <td>5</td>
+                                <td>$550.00</td>
+                                <td><input type="number" class="form-control" value="2"></td>
+                            </tr>
+                            <tr>
+                                <td>Oxidermic Dermo</td>
+                                <td>OXID24</td>
+                                <td>Numero de Orden</td>
+                                <td>PZ</td>
+                                <td>10</td>
+                                <td>$1,027.50</td>
+                                <td><input type="number" class="form-control" value="10"></td>
+                            </tr>
+                            <tr>
+                                <td>Suvenil Coleur</td>
+                                <td>SUN980</td>
+                                <td>Numero de Orden</td>
+                                <td>PZ</td>
+                                <td>15</td>
+                                <td>$980.00</td>
+                                <td><input type="number" class="form-control" value="12"></td>
+                            </tr>
+                            <tr>
+                                <td>Regenue100</td>
+                                <td>DMZ100</td>
+                                <td>Numero de Orden</td>
+                                <td>PZ</td>
+                                <td>10</td>
+                                <td>$650.00</td>
+                                <td><input type="number" class="form-control" value="10"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="summary">
+                    <div class="summary-item">
+                        <span>Subtotal a surtir</span>
+                        <span>$29,635.00</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Impuestos</span>
+                        <span>$4,741.60</span>
+                    </div>
+                    <div class="summary-item total">
+                        <span>Total a surtir</span>
+                        <span>$34,376.60</span>
+                    </div>
+                </div>
+            </ng-container>
+
+            <ng-container *ngIf="activeTab === 'validar'">
+                <div class="validar-container">
+                    <div class="validar-form">
+                        <div class="form-field">
+                            <label for="orden-compra">Orden de compra</label>
+                            <div class="input-with-icon">
+                                <input type="text" id="orden-compra" value="PR10023">
+                                <span class="material-symbols-outlined">search</span>
+                            </div>
+                        </div>
+                        <div class="form-field">
+                            <label for="nota-entrega">Nota de entrega</label>
+                            <div class="input-with-icon">
+                                <input type="text" id="nota-entrega" value="0021">
+                                <span class="material-symbols-outlined">search</span>
+                            </div>
+                        </div>
+                        <div class="form-field">
+                            <label>Factura</label>
+                            <button class="btn-upload">
+                                <span class="material-symbols-outlined">upload</span>
+                                Subir archivo
+                            </button>
+                        </div>
+                    </div>
+                    <button class="btn-validar">
+                        <span class="material-symbols-outlined">check</span>
+                        Validar
+                    </button>
+                </div>
+            </ng-container>
+        </div>
+        <div class="card-footer">
+            <div class="footer-actions">
+                <button class="btn-cancel" (click)="goBack()">
+                    <span class="material-symbols-outlined">arrow_back</span>
+                    Cancelar
+                </button>
+                <button class="btn-save">
+                    <span class="material-symbols-outlined">save</span>
+                    Guardar
+                </button>
+            </div>
+        </div>
+    </div>
+</div> 
