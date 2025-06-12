@@ -1,6 +1,6 @@
 <div class="contenido">
     <nav [class.collapsed]="isNavCollapsed">
-        <img src="logo.png" alt="">
+        <img src="logo.png" alt="Logo">
         <ul>
             <li [routerLink]="['home']" routerLinkActive="activo"><span class="material-symbols-outlined">home</span><h3>Home</h3></li>
             <li [routerLink]="['dashboard']" routerLinkActive="activo"><span class="material-symbols-outlined">analytics</span><h3>Dashboard</h3></li>
@@ -56,7 +56,6 @@
         </header>
         <div class="pagina">
             <router-outlet></router-outlet>
-            <h1>Bienvenid&#64; Usuario1</h1>
         </div>
     </div>
 </div>

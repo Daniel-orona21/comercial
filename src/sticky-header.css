@@ -1,0 +1,11 @@
+.cuerpo > header {
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 100 !important;
+    margin: 0 !important;
+    padding: 1rem 2rem !important;
+}
+
+.cuerpo > .pagina {
+    overflow-y: auto;
+} 

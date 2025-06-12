@@ -101,69 +101,75 @@
         flex: 1;
         display: flex;
         flex-direction: column;
+        position: relative;
+        overflow-y: auto;
+    }
         
-        header {
-            background-color: white;
-            margin: 2rem 2rem 1rem 2rem;
-            display: flex;
-            padding: 1rem;
-            align-items: center;
-            position: relative;
-            span {
-                color: $color-principal;
-                background-color: transparent;
-                padding: 0.5rem;
-                border-radius: 50%;
-                cursor: pointer;
-                transition: all 0.2s ease;
+    header {
+        background-color: white;
+        margin: 1rem;
+        padding: 1rem 2rem;
+        display: flex;
+        align-items: center;
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        
+        span {
+            color: $color-principal;
+            background-color: transparent;
+            padding: 0.5rem;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.2s ease;
 
-                &:hover {
-                    background-color: rgba(128, 128, 128, 0.194);
-                }
-            }
-
-            .headercenter {
-                flex: 1;
-                display: flex;
-                justify-content: center;
-            }
-            
-            .sucursalContenedor {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-                width: auto;
-                gap: 0.5rem;
-                h2 {
-                    font-weight: 500;
-                    color: rgb(56, 53, 62);
-                }
-            }
-
-            .headerRight {
-                display: flex;
-                align-items: center;
-                gap: 0.5rem;
+            &:hover {
+                background-color: rgba(128, 128, 128, 0.194);
             }
         }
 
-        .pagina {
-            user-select: auto;
+        .headercenter {
             flex: 1;
             display: flex;
-            flex-direction: column;
-            padding: 0 2rem 2rem 2rem;
-            position: relative;
-
-            h1 {
-                position: absolute;
-                z-index: 1;
-                top: 45%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                font-size: 2.5rem;
-                color: $color-principal;
+            justify-content: center;
+        }
+        
+        .sucursalContenedor {
+            align-items: center;
+            display: flex;
+            justify-content: center;
+            width: auto;
+            gap: 0.5rem;
+            h2 {
+                font-weight: 500;
+                color: rgb(56, 53, 62);
             }
+        }
+
+        .headerRight {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+    }
+
+    .pagina {
+        user-select: auto;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        padding: 0 1rem 1rem 1rem;
+        position: relative;
+        overflow-y: auto;
+
+        h1 {
+            position: absolute;
+            z-index: 1;
+            top: 45%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 2.5rem;
+            color: $color-principal;
         }
     }
 }

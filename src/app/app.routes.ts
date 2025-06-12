@@ -21,6 +21,7 @@ import { ReportesComponent } from './pages/reportes/reportes.component';
 import { GeneralComponent } from './pages/inventario/general/general.component';
 import { EntradasComponent } from './pages/inventario/entradas/entradas.component';
 import { SalidasTraspasosComponent } from './pages/inventario/salidas-traspasos/salidas-traspasos.component';
+import { RegistrarOrdenComponent } from './pages/ordenes-de-compra/registrar-orden/registrar-orden.component';
 
 export const routes: Routes = [
     { path: '', component: LoginComponent, pathMatch: 'full' },
@@ -50,6 +51,7 @@ export const routes: Routes = [
         },
         { path: 'pagos', component: PagosComponent },
         { path: 'ordenes', component: OrdenesDeCompraComponent },
+        { path: 'ordenes/registrar', component: RegistrarOrdenComponent },
         { path: 'facturacion', component: FacturacionComponent },
         { path: 'reportes', component: ReportesComponent },
     ] },

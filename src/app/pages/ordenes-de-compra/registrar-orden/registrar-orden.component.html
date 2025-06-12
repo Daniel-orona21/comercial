@@ -1,0 +1,167 @@
+<div class="container-fluid">
+    <div class="card">
+        <div class="card-header">
+            <h1 class="card-title">Registrar orden</h1>
+            <div class="id-badge">
+                <span>ID: 21</span>
+            </div>
+        </div>
+        <div class="card-body">
+            <form class="form-container">
+                <div class="form-grid">
+                    <div class="form-field">
+                        <label for="fecha-solicitud">Fecha de solicitud</label>
+                        <input type="text" id="fecha-solicitud" value="23/05/2025">
+                    </div>
+                    <div class="form-field">
+                        <label for="numero-compra">Numero de compra</label>
+                        <input type="text" id="numero-compra">
+                    </div>
+                    <div class="form-field">
+                        <label for="sucursal">Sucursal</label>
+                        <div class="contenedorSelect">
+                            <select id="sucursal">
+                                <option></option>
+                            </select>
+                            <span class="material-symbols-outlined">keyboard_arrow_down</span>
+                        </div>
+                    </div>
+                    <div class="form-field">
+                        <label for="proveedor">Proveedor</label>
+                        <div class="contenedorSelect">
+                            <select id="proveedor">
+                                <option></option>
+                            </select>
+                            <span class="material-symbols-outlined">keyboard_arrow_down</span>
+                        </div>
+                    </div>
+                    <div class="form-field">
+                        <label for="tipo-pago">Tipo de pago</label>
+                        <div class="contenedorSelect">
+                            <select id="tipo-pago">
+                                <option></option>
+                            </select>
+                            <span class="material-symbols-outlined">keyboard_arrow_down</span>
+                        </div>
+                    </div>
+                    <div class="form-field">
+                        <label for="area-solicitante">Area solicitante</label>
+                        <div class="contenedorSelect">
+                            <select id="area-solicitante">
+                                <option></option>
+                            </select>
+                            <span class="material-symbols-outlined">keyboard_arrow_down</span>
+                        </div>
+                    </div>
+                    <div class="form-field">
+                        <label for="responsable-compra">Responsable de la compra</label>
+                        <div class="contenedorSelect">
+                            <select id="responsable-compra">
+                                <option></option>
+                            </select>
+                            <span class="material-symbols-outlined">keyboard_arrow_down</span>
+                        </div>
+                    </div>
+                    <div class="form-field">
+                        <label for="estatus">Estatus</label>
+                        <div class="contenedorSelect">
+                            <select id="estatus">
+                                <option></option>
+                            </select>
+                            <span class="material-symbols-outlined">keyboard_arrow_down</span>
+                        </div>
+                    </div>
+                    <div class="form-field-button">
+                        <button type="button" class="btn-add-product">
+                            <span class="material-symbols-outlined">add</span>
+                            Agregar productos
+                        </button>
+                    </div>
+                </div>
+            </form>
+            <div class="table-container">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Item</th>
+                            <th>SKU</th>
+                            <th>Descripción</th>
+                            <th>Unidad de medida</th>
+                            <th>Cantidad</th>
+                            <th>Precio unitario</th>
+                            <th>Subtotal</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Acido hialuronico</td>
+                            <td>AC002D</td>
+                            <td>Acido hialuronico 50ml</td>
+                            <td>PZ</td>
+                            <td>5</td>
+                            <td>$550.00</td>
+                            <td>$2,750.00</td>
+                        </tr>
+                        <tr>
+                            <td>Oxidermic Dermo</td>
+                            <td>OXID24</td>
+                            <td>Numero de Orden</td>
+                            <td>PZ</td>
+                            <td>10</td>
+                            <td>$1,027.50</td>
+                            <td>$10,275.00</td>
+                        </tr>
+                        <tr>
+                            <td>Suvenil Coleur</td>
+                            <td>SUN980</td>
+                            <td>Numero de Orden</td>
+                            <td>PZ</td>
+                            <td>15</td>
+                            <td>$980.00</td>
+                            <td>$14,700.00</td>
+                        </tr>
+                        <tr>
+                            <td>Regenue100</td>
+                            <td>DMZ100</td>
+                            <td>Numero de Orden</td>
+                            <td>PZ</td>
+                            <td>10</td>
+                            <td>$650.00</td>
+                            <td>$6,500.00</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="summary">
+                <div class="summary-item">
+                    <span>Subtotal</span>
+                    <span>$34,225.00</span>
+                </div>
+                <div class="summary-item">
+                    <span>Impuestos</span>
+                    <span>$5,476.00</span>
+                </div>
+                <div class="summary-item total">
+                    <span>Subtotal</span>
+                    <span>$39,701.00</span>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer">
+            <button class="btn-approve">
+                <span class="material-symbols-outlined">visibility</span>
+                Aprobar/rechazar
+            </button>
+            <div class="footer-actions">
+                <button class="btn-cancel" (click)="goBack()">
+                    <span class="material-symbols-outlined">arrow_back</span>
+                    Cancelar
+                </button>
+                <button class="btn-save">
+                    <span class="material-symbols-outlined">save</span>
+                    Guardar
+                </button>
+            </div>
+        </div>
+    </div>
+</div> 
