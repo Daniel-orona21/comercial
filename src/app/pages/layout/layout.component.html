@@ -1,24 +1,62 @@
 <div class="contenido">
-    <nav>
+    <nav [class.collapsed]="isNavCollapsed">
         <img src="logo.png" alt="">
         <ul>
-            <li><span class="material-symbols-outlined">home</span><h3>Home</h3></li>
-            <li><span class="material-symbols-outlined">monitoring</span><h3>Dashboard</h3></li>
-            <li><span class="material-symbols-outlined">person</span><h3>Usuarios</h3></li>
-            <li><span class="material-symbols-outlined">security</span><h3>Roles y permisos</h3></li>
-            <li><span class="material-symbols-outlined">store</span><h3>Proveedores</h3></li>
-            <li><span class="material-symbols-outlined">location_on</span><h3>Sucursales</h3></li>
-            <li><span class="material-symbols-outlined">warehouse</span><h3>Almacenes</h3></li>
-            <li><span class="material-symbols-outlined">category</span><h3>Categorías</h3></li>
-            <li><span class="material-symbols-outlined">inventory</span><h3>Productos</h3></li>
-            <li><span class="material-symbols-outlined">inventory</span><h3>Servicios</h3></li>
-            <li><span class="material-symbols-outlined">inventory</span><h3>Paquetes</h3></li>
-            <li><span class="material-symbols-outlined">inventory</span><h3>Descuentos</h3></li>
-            <li><span class="material-symbols-outlined">inventory</span><h3>Inventario</h3></li>
-            <li><span class="material-symbols-outlined">inventory</span><h3>Pagos</h3></li>
-            <li><span class="material-symbols-outlined">inventory</span><h3>Ordenes de compra</h3></li>
-            <li><span class="material-symbols-outlined">inventory</span><h3>Facturación</h3></li>
-            <li><span class="material-symbols-outlined">inventory</span><h3>Reportes</h3></li>
+            <li [routerLink]="['home']" routerLinkActive="activo"><span class="material-symbols-outlined">home</span><h3>Home</h3></li>
+            <li [routerLink]="['dashboard']" routerLinkActive="activo"><span class="material-symbols-outlined">analytics</span><h3>Dashboard</h3></li>
+            <li [routerLink]="['usuarios']" routerLinkActive="activo"><span class="material-symbols-outlined">contacts_product</span><h3>Usuarios</h3></li>
+            <li [routerLink]="['roles']" routerLinkActive="activo"><span class="material-symbols-outlined">assignment_ind</span><h3>Roles y permisos</h3></li>
+            <li [routerLink]="['proveedores']" routerLinkActive="activo"><span class="material-symbols-outlined">contacts_product</span><h3>Proveedores</h3></li>
+            <li [routerLink]="['sucursales']" routerLinkActive="activo"><span class="material-symbols-outlined">home</span><h3>Sucursales</h3></li>
+            <li [routerLink]="['almacenes']" routerLinkActive="activo"><span class="material-symbols-outlined">deployed_code</span><h3>Almacenes</h3></li>
+            <li [routerLink]="['categorias']" routerLinkActive="activo"><span class="material-symbols-outlined">category</span><h3>Categorías</h3></li>
+            <li [routerLink]="['productos']" routerLinkActive="activo"><span class="material-symbols-outlined">shopping_bag</span><h3>Productos</h3></li>
+            <li [routerLink]="['servicios']" routerLinkActive="activo"><span class="material-symbols-outlined">contact_mail</span><h3>Servicios</h3></li>
+            <li [routerLink]="['paquetes']" routerLinkActive="activo"><span class="material-symbols-outlined">inventory_2</span><h3>Paquetes</h3></li>
+            <li [routerLink]="['descuentos']" routerLinkActive="activo"><span class="material-symbols-outlined">sell</span><h3>Descuentos</h3></li>
+            <li [routerLink]="['inventario']" routerLinkActive="activo"><span class="material-symbols-outlined">barcode_reader</span><h3>Inventario</h3></li>
+            <li [routerLink]="['pagos']" routerLinkActive="activo"><span class="material-symbols-outlined">price_change</span><h3>Pagos</h3></li>
+            <li [routerLink]="['ordenes']" routerLinkActive="activo"><span class="material-symbols-outlined">add_business</span><h3>Ordenes de compra</h3></li>
+            <li [routerLink]="['facturacion']" routerLinkActive="activo"><span class="material-symbols-outlined">request_page</span><h3>Facturación</h3></li>
+            <li [routerLink]="['reportes']" routerLinkActive="activo"><span class="material-symbols-outlined">breaking_news_alt_1</span><h3>Reportes</h3></li>
         </ul>
     </nav>
+    <div class="cuerpo">
+        <header>
+            <span class="material-symbols-outlined" (click)="toggleNav()">menu</span>
+            <div class="headercenter">
+                <div class="sucursalContenedor">
+                    <h2>Sucursal CDMX</h2>
+                    <span class="material-symbols-outlined">keyboard_arrow_down</span>
+                </div>
+            </div>
+            <div class="headerRight">
+                <div class="notification-icon">
+                  <span class="material-symbols-outlined">notifications</span>
+                  <span class="notification-badge" *ngIf="notificationCount > 0">{{ notificationCount }}</span>
+                </div>
+                <img src='user.png' alt="">
+                <span class="material-symbols-outlined arrow-user-menu" (click)="toggleUserMenu()" [class.rotated]="showUserMenu">keyboard_arrow_down</span>
+                <div class="user-menu" *ngIf="showUserMenu">
+                    <div class="user-menu-header">
+                        <img src="user.png" alt="">
+                        <div>
+                            <div class="user-name">Mathew Lucas</div>
+                            <div class="user-role">Administrador</div>
+                        </div>
+                    </div>
+                    <hr>
+                    <ul>
+                        <li><span class="material-symbols-outlined">person</span> Perfil</li>
+                        <li><span class="material-symbols-outlined">settings</span> Configuración</li>
+                        <li (click)="logout()"><span class="material-symbols-outlined">chip_extraction</span> Cerrar sesión</li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+        <div class="pagina">
+            <h1>Bienvenid&#64; Usuario1</h1>
+            <router-outlet></router-outlet>
+        </div>
+    </div>
 </div>

@@ -39,7 +39,6 @@ export const routes: Routes = [
         { path: 'pagos', component: PagosComponent },
         { path: 'ordenes', component: OrdenesDeCompraComponent },
         { path: 'facturacion', component: FacturacionComponent },
-        { path: 'home', component: HomeComponent },
         { path: 'reportes', component: ReportesComponent },
     ] },
     { path: '**', redirectTo: '' }
