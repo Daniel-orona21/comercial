@@ -1,1 +1,225 @@
-<p>inventario works!</p>
+<div class="container-fluid">
+  <div class="tabs-container">
+    <button class="tab-button active">
+      <span class="material-symbols-outlined">inventory_2</span> General
+    </button>
+    <button class="tab-button">
+      <span class="material-symbols-outlined">login</span> Entradas
+    </button>
+    <button class="tab-button">
+      <span class="material-symbols-outlined">logout</span> Salidas/traspasos
+    </button>
+    <button class="tab-button">
+      <span class="material-symbols-outlined">fact_check</span> Validación de inventario
+    </button>
+    <button class="tab-button">
+      <span class="material-symbols-outlined">edit</span> Ajuste de inventario
+    </button>
+    <button class="tab-button">
+      <span class="material-symbols-outlined">checklist</span> Inventario aleatorio
+    </button>
+  </div>
+  <div class="card">
+    <div class="card-header">
+      <div class="encabezado">
+        <h1 class="card-title">Inventario</h1>
+        <div class="contenedor-buscador">
+          <input type="text" class="buscador" placeholder="Buscar...">
+          <span class="material-symbols-outlined">search</span>
+        </div>
+        <div class="filtros">
+          <div class="categoria">
+            <h3>Categoría</h3>
+            <span class="material-symbols-outlined btn-icon">keyboard_arrow_down</span>
+          </div>
+          <div class="categoria">
+            <h3>Almacen</h3>
+            <span class="material-symbols-outlined btn-icon">keyboard_arrow_down</span>
+          </div>
+          <div class="categoria">
+            <h3>Estatus</h3>
+            <span class="material-symbols-outlined btn-icon">keyboard_arrow_down</span>
+          </div>
+        </div>
+      </div>
+      <div class="botonera">
+        <button class="btn-primary">
+          <span class="material-symbols-outlined">download</span>
+          Descargar
+        </button>
+      </div>
+    </div>
+    <div class="card-body">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>No.</th>
+            <th>Nombre</th>
+            <th>SKU</th>
+            <th>Categoría</th>
+            <th>Presentación</th>
+            <th>Almacen</th>
+            <th>Lote</th>
+            <th>Caducidad</th>
+            <th>Cantidad</th>
+            <th>Último movimiento</th>
+            <th>Estatus</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>Acido hialuro..</td>
+            <td>AC002D</td>
+            <td>Anti-enveje</td>
+            <td>60 ml</td>
+            <td>Suc1</td>
+            <td>A001</td>
+            <td>30/05/2027</td>
+            <td>50</td>
+            <td>09/05/2025</td>
+            <td><span class="status disponible">Disponible</span></td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Felurico 0.5%</td>
+            <td>FE002J</td>
+            <td>Anti-enveje</td>
+            <td>50 ml</td>
+            <td>Suc1</td>
+            <td>A002</td>
+            <td>30/08/2029</td>
+            <td>20</td>
+            <td>09/05/2025</td>
+            <td><span class="status disponible">Disponible</span></td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>Felurico 0.5%</td>
+            <td>FE002J</td>
+            <td>Anti-enveje</td>
+            <td>50 ml</td>
+            <td>Suc2</td>
+            <td>A0024</td>
+            <td>20/05/2026</td>
+            <td>10</td>
+            <td>15/05/2025</td>
+            <td><span class="status bajo-stock">Bajo stock</span></td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>Cleanance Gel</td>
+            <td>CEG928</td>
+            <td>Facial</td>
+            <td>200 ml</td>
+            <td>Suc1</td>
+            <td>C003</td>
+            <td>10/11/2027</td>
+            <td>19</td>
+            <td>09/05/2025</td>
+            <td><span class="status disponible">Disponible</span></td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td>Cleanance Gel</td>
+            <td>CEG928</td>
+            <td>Facial</td>
+            <td>200 ml</td>
+            <td>Suc2</td>
+            <td>C026</td>
+            <td>30/04/2025</td>
+            <td>45</td>
+            <td>14/04/2025</td>
+            <td><span class="status caducado">Caducado</span></td>
+          </tr>
+          <tr>
+            <td>6</td>
+            <td>Regenue25</td>
+            <td>DMZ025</td>
+            <td>Dermatológi</td>
+            <td>50 ml</td>
+            <td>Suc1</td>
+            <td>R035</td>
+            <td>26/02/2028</td>
+            <td>12</td>
+            <td>09/05/2025</td>
+            <td><span class="status bajo-stock">Bajo stock</span></td>
+          </tr>
+          <tr>
+            <td>7</td>
+            <td>Regenue50</td>
+            <td>DMZ050</td>
+            <td>Dermatológi</td>
+            <td>50 ml</td>
+            <td>Suc3</td>
+            <td>R015</td>
+            <td>30/05/2026</td>
+            <td>20</td>
+            <td>11/05/2025</td>
+            <td><span class="status en-transito">En transito</span></td>
+          </tr>
+          <tr>
+            <td>8</td>
+            <td>Neudermic</td>
+            <td>NEUD24</td>
+            <td>Dermatológi</td>
+            <td>240 ml</td>
+            <td>Suc1</td>
+            <td>R723</td>
+            <td>18/12/2025</td>
+            <td>15</td>
+            <td>18/05/2025</td>
+            <td><span class="status disponible">Disponible</span></td>
+          </tr>
+          <tr>
+            <td>9</td>
+            <td>Oxidermic</td>
+            <td>OXID24</td>
+            <td>Facial</td>
+            <td>200 ml</td>
+            <td>Suc1</td>
+            <td>OX79</td>
+            <td>30/12/2026</td>
+            <td>38</td>
+            <td>09/05/2025</td>
+            <td><span class="status disponible">Disponible</span></td>
+          </tr>
+          <tr>
+            <td>10</td>
+            <td>Sunveil Coule</td>
+            <td>SUN980</td>
+            <td>Dermatológi</td>
+            <td>50 ml</td>
+            <td>Suc1</td>
+            <td>HR38</td>
+            <td>30/05/2027</td>
+            <td>0</td>
+            <td>22/05/2025</td>
+            <td><span class="status agotado">Agotado</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="card-footer">
+      <div class="pagination-controls">
+        <span>Resultados por pagina:</span>
+        <select class="form-select">
+          <option selected>10</option>
+          <option>20</option>
+          <option>50</option>
+        </select>
+      </div>
+      <div class="pagination-info">
+        <span>1-10 de 300</span>
+        <div class="btn-group">
+          <button class="btn-light">
+            <span class="material-symbols-outlined">chevron_left</span>
+          </button>
+          <button class="btn-light">
+            <span class="material-symbols-outlined">chevron_right</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
