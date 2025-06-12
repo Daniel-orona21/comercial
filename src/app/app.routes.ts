@@ -18,6 +18,9 @@ import { PagosComponent } from './pages/pagos/pagos.component';
 import { OrdenesDeCompraComponent } from './pages/ordenes-de-compra/ordenes-de-compra.component';
 import { FacturacionComponent } from './pages/facturacion/facturacion.component';
 import { ReportesComponent } from './pages/reportes/reportes.component';
+import { GeneralComponent } from './pages/inventario/general/general.component';
+import { EntradasComponent } from './pages/inventario/entradas/entradas.component';
+import { SalidasTraspasosComponent } from './pages/inventario/salidas-traspasos/salidas-traspasos.component';
 
 export const routes: Routes = [
     { path: '', component: LoginComponent, pathMatch: 'full' },
@@ -35,7 +38,16 @@ export const routes: Routes = [
         { path: 'servicios', component: ServiciosComponent },
         { path: 'paquetes', component: PaquetesComponent },
         { path: 'descuentos', component: DescuentosComponent },
-        { path: 'inventario', component: InventarioComponent },
+        { 
+            path: 'inventario', 
+            component: InventarioComponent,
+            children: [
+                { path: '', redirectTo: 'general', pathMatch: 'full' },
+                { path: 'general', component: GeneralComponent },
+                { path: 'entradas', component: EntradasComponent },
+                { path: 'salidas-traspasos', component: SalidasTraspasosComponent }
+            ] 
+        },
         { path: 'pagos', component: PagosComponent },
         { path: 'ordenes', component: OrdenesDeCompraComponent },
         { path: 'facturacion', component: FacturacionComponent },

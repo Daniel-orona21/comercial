@@ -1,42 +1,4 @@
-@use '../../../colores.scss' as *;
-
-:host {
-    display: block;
-    z-index: 9;
-}
-
-.tabs-container {
-    display: flex;
-    gap: 20px;
-}
-
-.tab-button {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    background-color: transparent;
-    border: none;
-    padding: 12px 20px 15px 20px;
-    transform: translateY(5px);
-    cursor: pointer;
-    font-size: 1rem;
-    color: #6B7280;
-    border-bottom: 2px solid transparent;
-    transition: all 0.2s ease-in-out;
-    z-index: 1;
-
-    &.active {
-        border-radius: 8px 8px 0 0;
-        background-color: white;
-        color: $color-principal;
-        border-bottom: 2px solid $color-principal;
-    }
-
-    &:hover:not(.active) {
-        background-color: #F9FAFB;
-        border-radius: 8px 8px 0 0;
-    }
-}
+@use '../../../../colores.scss' as *;
 
 .btn-icon {
     background: none;
@@ -128,6 +90,22 @@
     }
 }
 
+.date-picker {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: $texto-secundario;
+    border: 1px solid #d1d5db;
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+
+    h3 {
+        font-size: 1rem;
+        font-weight: 400;
+        margin: 0;
+    }
+}
 .botonera {
     display: flex;
     gap: 10px;
@@ -148,7 +126,17 @@
     transition: background-color 0.2s ease;
 
     &:hover {
-        background-color: $boton-fondo-hover;
+      background-color: $boton-fondo-hover;
+    }
+}
+  
+.secundario {
+    background-color: $boton-secundario;
+    color: $color-principal;
+    border: 1px solid $color-principal;
+
+    &:hover {
+      background-color: $boton-secundario-hover;
     }
 }
 
@@ -194,31 +182,9 @@
     }
 }
 
-.status {
-  padding: 4px 8px;
-  border-radius: 12px;
-  font-weight: 500;
-  
-  &.disponible {
+.cantidad-positiva {
     color: #059669;
-  }
-  
-  &.bajo-stock {
-    color: #D97706;
-  }
-  
-  &.caducado {
-    color: #9333EA;
-  }
-  
-  &.en-transito {
-    color: #2563EB;
-  }
-  
-  &.agotado {
-    color: #111827;
-    font-weight: 700;
-  }
+    font-weight: 500;
 }
 
 .card-footer {
