@@ -1,1 +1,55 @@
-<p>citas works!</p>
+<div class="agenda-container">
+  <div class="agenda-body">
+    <div class="calendar-wrapper">
+      <full-calendar #calendar [options]="calendarOptions"></full-calendar>
+    </div>
+
+    <div class="sidebar" *ngIf="currentView === 'dayGridMonth'">
+      <div class="sidebar-header">
+        <h3>Citas de hoy</h3>
+        <button class="expand-button">
+          <span class="material-symbols-outlined">expand_less</span>
+        </button>
+      </div>
+      <div class="citas-list">
+        <div class="cita-item" *ngFor="let cita of citasDeHoy">
+          <span class="material-symbols-outlined star-icon">star</span>
+          <div class="cita-details">
+            <span class="cita-name">{{ cita.name }}</span>
+            <span class="cita-time">{{ cita.time }}</span>
+            <span class="cita-service">{{ cita.service }}</span>
+          </div>
+        </div>
+      </div>
+      <div class="sidebar-footer">
+        <span class="material-symbols-outlined">expand_more</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="agenda-footer">
+    <div class="view-selector">
+      <button [class.active]="currentView === 'dayGridMonth'" (click)="changeView('dayGridMonth')">
+        <span class="material-symbols-outlined">calendar_month</span> Mes
+      </button>
+      <button [class.active]="currentView === 'timeGridWeek'" (click)="changeView('timeGridWeek')">
+        <span class="material-symbols-outlined">view_week</span> Sem..
+      </button>
+      <button [class.active]="currentView === 'resourceTimelineDay'" (click)="changeView('resourceTimelineDay')">
+        <span class="material-symbols-outlined">view_day</span> Día
+      </button>
+    </div>
+    <div class="date-navigator">
+      <button (click)="prev()"><span class="material-symbols-outlined">chevron_left</span></button>
+      <span class="current-date">{{ calendarTitle }}</span>
+      <button (click)="next()"><span class="material-symbols-outlined">chevron_right</span></button>
+    </div>
+    <div class="search-client">
+      <span class="material-symbols-outlined">search</span>
+      <input type="text" placeholder="Buscar cliente">
+    </div>
+    <button class="add-button">
+      <span class="material-symbols-outlined">add</span>
+    </button>
+  </div>
+</div>

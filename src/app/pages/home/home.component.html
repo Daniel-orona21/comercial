@@ -1,10 +1,14 @@
 <div class="grid">
-    <div class="cuadro">
+    <div *ngIf="currentRole === 'admin'" class="cuadro">
         <span class="material-symbols-outlined">currency_exchange</span>
         <h3>Puntos de venta</h3>
     </div>
-    <div class="cuadro">
+    <div *ngIf="currentRole === 'admin'" class="cuadro">
         <span class="material-symbols-outlined">calendar_clock</span>
         <h3>Citas</h3>
+    </div>
+    <div *ngIf="currentRole === 'director'" class="cuadro">
+        <span class="material-symbols-outlined">warehouse</span>
+        <h3>Inventario</h3>
     </div>
 </div>
