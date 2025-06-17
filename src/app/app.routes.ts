@@ -23,6 +23,14 @@ import { EntradasComponent } from './pages/inventario/entradas/entradas.componen
 import { SalidasTraspasosComponent } from './pages/inventario/salidas-traspasos/salidas-traspasos.component';
 import { RegistrarOrdenComponent } from './pages/ordenes-de-compra/registrar-orden/registrar-orden.component';
 import { EditarOrdenComponent } from './pages/ordenes-de-compra/editar-orden/editar-orden.component';
+import { CitasComponent } from './pages/citas/citas.component';
+import { ClientesComponent } from './pages/clientes/clientes.component';
+import { ExpedienteComponent } from './pages/expediente/expediente.component';
+import { PuntoDeVentaComponent } from './pages/punto-de-venta/punto-de-venta.component';
+import { ComisionesComponent } from './pages/comisiones/comisiones.component';
+import { NotasDeCreditoComponent } from './pages/notas-de-credito/notas-de-credito.component';
+import { DescuentosPromocionesComponent } from './pages/descuentos-promociones/descuentos-promociones.component';
+import { FacturasComponent } from './pages/facturas/facturas.component';
 
 export const routes: Routes = [
     { path: '', component: LoginComponent, pathMatch: 'full' },
@@ -58,6 +66,15 @@ export const routes: Routes = [
         { path: 'ordenes/editar/:id', component: EditarOrdenComponent },
         { path: 'facturacion', component: FacturacionComponent },
         { path: 'reportes', component: ReportesComponent },
+        { path: 'citas', component: CitasComponent },
+        { path: 'clientes', component: ClientesComponent },
+        { path: 'expediente', component: ExpedienteComponent },
+        { path: 'puntos-de-venta', component: PuntoDeVentaComponent },
+        { path: 'comisiones', component: ComisionesComponent },
+        { path: 'notas-de-credito', component: NotasDeCreditoComponent },
+        { path: 'descuentos-y-promociones', component: DescuentosPromocionesComponent },
+        { path: 'facturas', component: FacturasComponent },
+        
     ] },
     { path: '**', redirectTo: '' }
 ];

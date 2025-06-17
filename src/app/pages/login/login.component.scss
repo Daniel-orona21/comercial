@@ -70,6 +70,13 @@
     outline: none;
 }
 
+.error-message {
+    color: #dc2626;
+    font-size: 0.9rem;
+    text-align: center;
+    margin-top: -1rem;
+}
+
 .opciones {
     padding: 0;
     width: 100%;
@@ -143,7 +150,7 @@
         }
       }
     }
-  }
+}
 
 .boton-login {
     background-color: $color-principal;
