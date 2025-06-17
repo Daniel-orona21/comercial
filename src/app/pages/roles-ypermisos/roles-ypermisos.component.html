@@ -1,1 +1,190 @@
-<p>roles-ypermisos works!</p>
+<div class="container-fluid">
+    <div class="card">
+      <div class="card-header">
+        <h1 class="card-title">Roles y Permisos</h1>
+        <button class="btn-primary" (click)="newRole()">
+          <span class="material-symbols-outlined">add</span>
+          Nuevo
+        </button>
+      </div>
+      <div class="card-body">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Rol</th>
+              <th>Estatus</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>DIrector</td>
+              <td><span class="badge bg-success">Activo</span></td>
+              <td class="actions">
+                <button class="btn-icon">
+                  <span class="material-symbols-outlined icon-view">visibility</span>
+                </button>
+                <button class="btn-icon">
+                  <span class="material-symbols-outlined icon-edit">edit</span>
+                </button>
+                <button class="btn-icon">
+                  <span class="material-symbols-outlined icon-delete">delete</span>
+                </button>
+              </td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Administrador</td>
+              <td><span class="badge bg-success">Activo</span></td>
+              <td class="actions">
+                <button class="btn-icon">
+                  <span class="material-symbols-outlined icon-view">visibility</span>
+                </button>
+                <button class="btn-icon">
+                  <span class="material-symbols-outlined icon-edit">edit</span>
+                </button>
+                <button class="btn-icon">
+                  <span class="material-symbols-outlined icon-delete">delete</span>
+                </button>
+              </td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>Supervisor</td>
+              <td><span class="badge bg-success">Activo</span></td>
+              <td class="actions">
+                <button class="btn-icon">
+                  <span class="material-symbols-outlined icon-view">visibility</span>
+                </button>
+                <button class="btn-icon">
+                  <span class="material-symbols-outlined icon-edit">edit</span>
+                </button>
+                <button class="btn-icon">
+                  <span class="material-symbols-outlined icon-delete">delete</span>
+                </button>
+              </td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td>Encargado de Almacén</td>
+              <td><span class="badge bg-success">Activo</span></td>
+              <td class="actions">
+                <button class="btn-icon">
+                  <span class="material-symbols-outlined icon-view">visibility</span>
+                </button>
+                <button class="btn-icon">
+                  <span class="material-symbols-outlined icon-edit">edit</span>
+                </button>
+                <button class="btn-icon">
+                  <span class="material-symbols-outlined icon-delete">delete</span>
+                </button>
+              </td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>Auxliar de Almacén</td>
+                <td><span class="badge bg-success">Activo</span></td>
+                <td class="actions">
+                  <button class="btn-icon">
+                    <span class="material-symbols-outlined icon-view">visibility</span>
+                  </button>
+                  <button class="btn-icon">
+                    <span class="material-symbols-outlined icon-edit">edit</span>
+                  </button>
+                  <button class="btn-icon">
+                    <span class="material-symbols-outlined icon-delete">delete</span>
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td>6</td>
+                <td>Ventas</td>
+                <td><span class="badge bg-success">Activo</span></td>
+                <td class="actions">
+                  <button class="btn-icon">
+                    <span class="material-symbols-outlined icon-view">visibility</span>
+                  </button>
+                  <button class="btn-icon">
+                    <span class="material-symbols-outlined icon-edit">edit</span>
+                  </button>
+                  <button class="btn-icon">
+                    <span class="material-symbols-outlined icon-delete">delete</span>
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td>7</td>
+                <td>Supervisor de compras</td>
+                <td><span class="badge bg-success">Activo</span></td>
+                <td class="actions">
+                  <button class="btn-icon">
+                    <span class="material-symbols-outlined icon-view">visibility</span>
+                  </button>
+                  <button class="btn-icon">
+                    <span class="material-symbols-outlined icon-edit">edit</span>
+                  </button>
+                  <button class="btn-icon">
+                    <span class="material-symbols-outlined icon-delete">delete</span>
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td>8</td>
+                <td>Auxiliar de compras</td>
+                <td><span class="badge bg-success">Activo</span></td>
+                <td class="actions">
+                  <button class="btn-icon">
+                    <span class="material-symbols-outlined icon-view">visibility</span>
+                  </button>
+                  <button class="btn-icon">
+                    <span class="material-symbols-outlined icon-edit">edit</span>
+                  </button>
+                  <button class="btn-icon">
+                    <span class="material-symbols-outlined icon-delete">delete</span>
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td>9</td>
+                <td>Finanzas</td>
+                <td><span class="badge bg-success">Activo</span></td>
+                <td class="actions">
+                  <button class="btn-icon">
+                    <span class="material-symbols-outlined icon-view">visibility</span>
+                  </button>
+                  <button class="btn-icon">
+                    <span class="material-symbols-outlined icon-edit">edit</span>
+                  </button>
+                  <button class="btn-icon">
+                    <span class="material-symbols-outlined icon-delete">delete</span>
+                  </button>
+                </td>
+              </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card-footer">
+        <div class="pagination-controls">
+            <span>Resultados por pagina:</span>
+            <select class="form-select">
+                <option selected>10</option>
+                <option>20</option>
+                <option>50</option>
+            </select>
+        </div>
+        <div class="pagination-info">
+            <span>1-10 de 10</span>
+            <div class="btn-group">
+                <button class="btn-light">
+                  <span class="material-symbols-outlined">chevron_left</span>
+                </button>
+                <button class="btn-light">
+                  <span class="material-symbols-outlined">chevron_right</span>
+                </button>
+            </div>
+        </div>
+      </div>
+    </div>
+</div>

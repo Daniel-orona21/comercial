@@ -32,6 +32,8 @@ export const routes: Routes = [
         { path: 'dashboard', component: DashboardComponent},
         { path: 'usuarios', component: UsuariosComponent },
         { path: 'roles', component: RolesYpermisosComponent },
+        { path: 'roles-y-permisos', component: RolesYpermisosComponent },
+        { path: 'roles-y-permisos/crear', loadComponent: () => import('./pages/roles-ypermisos/crear-rol/crear-rol.component').then(m => m.CrearRolComponent) },
         { path: 'proveedores', component: ProveedoresComponent },
         { path: 'sucursales', component: SucursalesComponent },
         { path: 'almacenes', component: AlmacenesComponent },
