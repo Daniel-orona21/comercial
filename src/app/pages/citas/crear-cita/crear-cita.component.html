@@ -1,0 +1,57 @@
+<div class="modal-overlay" (click)="onCancel()">
+  <div class="modal-container" (click)="$event.stopPropagation()">
+    <div class="modal-header">
+      <h2>Crear Nueva Cita</h2>
+      <button class="close-button" (click)="onCancel()">
+        <span class="material-symbols-outlined">close</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form [formGroup]="citaForm" (ngSubmit)="onSave()">
+        <div class="form-field">
+          <label for="cliente">Cliente</label>
+          <input id="cliente" type="text" formControlName="cliente" placeholder="Nombre del cliente">
+        </div>
+
+        <div class="form-field">
+          <label for="servicio">Servicio</label>
+          <input id="servicio" type="text" formControlName="servicio" placeholder="Nombre del servicio">
+        </div>
+
+        <div class="form-field">
+          <label for="resourceId">Personal</label>
+          <select id="resourceId" formControlName="resourceId">
+            <option value="" disabled>Seleccionar personal</option>
+            <option *ngFor="let resource of resources" [value]="resource.id">{{ resource.title }}</option>
+          </select>
+        </div>
+
+        <div class="form-row">
+          <div class="form-field">
+            <label for="fecha">Fecha</label>
+            <input id="fecha" type="date" formControlName="fecha">
+          </div>
+          <div class="form-field">
+            <label for="horaInicio">Hora de inicio</label>
+            <select id="horaInicio" formControlName="horaInicio">
+              <option value="" disabled>Seleccionar hora</option>
+              <option *ngFor="let time of timeSlots" [value]="time">{{ time }}</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label for="horaFin">Hora de fin</label>
+            <select id="horaFin" formControlName="horaFin">
+              <option value="" disabled>Seleccionar hora</option>
+              <option *ngFor="let time of timeSlots" [value]="time">{{ time }}</option>
+            </select>
+          </div>
+        </div>
+        
+        <div class="modal-footer">
+          <button type="button" class="btn btn-cancel" (click)="onCancel()">Cancelar</button>
+          <button type="submit" class="btn btn-save" [disabled]="citaForm.invalid">Guardar Cita</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div> 

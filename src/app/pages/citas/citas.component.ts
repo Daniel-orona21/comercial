@@ -3,31 +3,47 @@ import { FullCalendarComponent, FullCalendarModule } from '@fullcalendar/angular
 import { Calendar, CalendarOptions } from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
-import interactionPlugin from '@fullcalendar/interaction';
+import interactionPlugin, { DateClickArg } from '@fullcalendar/interaction';
 import resourceTimelinePlugin from '@fullcalendar/resource-timeline';
+import resourceTimeGridPlugin from '@fullcalendar/resource-timegrid';
 import { CommonModule } from '@angular/common';
 import esLocale from '@fullcalendar/core/locales/es';
+import { CrearCitaComponent } from './crear-cita/crear-cita.component';
+
+// Professional color palette
+const appointmentColors = {
+  valoracion: '#a3c4f3', // Pastel Blue
+  depilacion: '#90ee90', // Light Green
+  relleno: '#d3aed6',    // Pastel Purple
+  comida: '#e0e0e0',      // Grey
+  default: '#f4a261'     // Default Orange
+};
 
 @Component({
   selector: 'app-citas',
   standalone: true,
-  imports: [CommonModule, FullCalendarModule],
+  imports: [CommonModule, FullCalendarModule, CrearCitaComponent],
   templateUrl: './citas.component.html',
   styleUrl: './citas.component.scss'
 })
 export class CitasComponent implements AfterViewInit {
   @ViewChild('calendar') calendarComponent!: FullCalendarComponent;
 
-  currentView: 'dayGridMonth' | 'timeGridWeek' | 'resourceTimelineDay' = 'dayGridMonth';
+  currentView: 'dayGridMonth' | 'timeGridWeek' | 'resourceTimeGridDay' = 'dayGridMonth';
   calendarTitle: string = '';
+  showCrearCitaModal = false;
+  selectedDate: Date | null = null;
+  selectedResourceId: string | null = null;
 
   calendarOptions: CalendarOptions = {
     plugins: [
       resourceTimelinePlugin,
       dayGridPlugin,
       timeGridPlugin,
-      interactionPlugin
+      interactionPlugin,
+      resourceTimeGridPlugin
     ],
+    dateClick: this.handleDateClick.bind(this),
     headerToolbar: false,
     initialView: 'dayGridMonth',
     nowIndicator: true,
@@ -49,7 +65,7 @@ export class CitasComponent implements AfterViewInit {
     },
     
     views: {
-      resourceTimelineDay: {
+      resourceTimeGridDay: {
         slotLabelFormat: {
           hour: 'numeric',
           minute: '2-digit',
@@ -59,18 +75,65 @@ export class CitasComponent implements AfterViewInit {
       }
     },
 
-    resourceAreaHeaderContent: 'Personal',
+    resourceLabelContent: (arg) => {
+      return {
+        html: `
+          <div class="resource-header">
+            <img class="resource-avatar" src="${arg.resource.extendedProps['imageUrl']}" />
+            <div class="resource-name">${arg.resource.title}</div>
+          </div>
+        `
+      }
+    },
     resources: [
-      { id: 'a', title: 'Miriam López' },
-      { id: 'b', title: 'Mary Sanchez' },
-      { id: 'c', title: 'Luisa López' },
-      { id: 'd', title: 'Irma Bejar' },
-      { id: 'e', title: 'Brenda Rios' },
-      { id: 'f', title: 'Isabel Carlos' },
-      { id: 'g', title: 'Araceli Diaz' }
+      { id: 'a', title: 'Miriam López', imageUrl: 'https://i.pravatar.cc/150?u=a' },
+      { id: 'b', title: 'Mary Sanchez', imageUrl: 'https://i.pravatar.cc/150?u=b' },
+      { id: 'c', title: 'Luisa López', imageUrl: 'https://i.pravatar.cc/150?u=c' },
+      { id: 'd', title: 'Irma Bejar', imageUrl: 'https://i.pravatar.cc/150?u=d' },
+      { id: 'e', title: 'Brenda Rios', imageUrl: 'https://i.pravatar.cc/150?u=e' },
+      { id: 'f', title: 'Isabel Carlos', imageUrl: 'https://i.pravatar.cc/150?u=f' },
+      { id: 'g', title: 'Araceli Diaz', imageUrl: 'https://i.pravatar.cc/150?u=g' }
     ],
     events: this.getEventsForDate(new Date()),
   };
+
+  getArrayResources(): any[] {
+    const resources = this.calendarOptions.resources;
+    if (Array.isArray(resources)) {
+      return resources;
+    }
+    return [];
+  }
+
+  handleDateClick(arg: DateClickArg) {
+    this.selectedDate = arg.date;
+    
+    if (this.currentView === 'resourceTimeGridDay') {
+      this.selectedResourceId = arg.resource?.id || null;
+    } else {
+      this.selectedResourceId = null;
+    }
+
+    this.showCrearCitaModal = true;
+  }
+
+  openCrearCitaModal() {
+    this.selectedDate = new Date(); // Default to today if opened from '+' button
+    this.showCrearCitaModal = true;
+  }
+
+  onCloseModal() {
+    this.showCrearCitaModal = false;
+  }
+
+  onSaveCita(newEvent: any) {
+    const eventWithColor = {
+      ...newEvent,
+      color: appointmentColors.default
+    };
+    this.calendarApi?.addEvent(eventWithColor);
+    this.showCrearCitaModal = false;
+  }
 
   citasDeHoy = [
     { name: 'Luisa Peréz', time: '08:00 - 09:00', service: 'Valoración' },
@@ -100,7 +163,7 @@ export class CitasComponent implements AfterViewInit {
     }
   }
 
-  changeView(view: 'dayGridMonth' | 'timeGridWeek' | 'resourceTimelineDay') {
+  changeView(view: 'dayGridMonth' | 'timeGridWeek' | 'resourceTimeGridDay') {
     this.currentView = view;
     this.calendarApi?.changeView(view);
     this.updateCalendarTitle();
@@ -122,17 +185,17 @@ export class CitasComponent implements AfterViewInit {
     const day = date.getDate();
 
     return [
-      { id: '1', resourceId: 'c', start: new Date(year, month, day, 8, 0), end: new Date(year, month, day, 9, 0), title: '2325 Lucia Perez\nValoración (2561)', color: '#FFC0CB' },
-      { id: '2', resourceId: 'c', start: new Date(year, month, day, 9, 0), end: new Date(year, month, day, 10, 0), title: '2392 Sabrina Rios\nDepilacion (1254)', color: '#00FFFF' },
-      { id: '3', resourceId: 'c', start: new Date(year, month, day, 11, 0), end: new Date(year, month, day, 12, 0), title: '2389 Rocio Salas\nDepilacion (1254)', color: '#FFC0CB' },
-      { id: '4', resourceId: 'c', start: new Date(year, month, day, 14, 0), end: new Date(year, month, day, 15, 0), title: '2326 Maria Perez\nValoración (2561)', color: '#FFC0CB' },
+      { id: '1', resourceId: 'c', start: new Date(year, month, day, 8, 0), end: new Date(year, month, day, 9, 0), title: '2325 Lucia Perez\nValoración (2561)', color: appointmentColors.valoracion },
+      { id: '2', resourceId: 'c', start: new Date(year, month, day, 9, 0), end: new Date(year, month, day, 10, 0), title: '2392 Sabrina Rios\nDepilacion (1254)', color: appointmentColors.depilacion },
+      { id: '3', resourceId: 'c', start: new Date(year, month, day, 11, 0), end: new Date(year, month, day, 12, 0), title: '2389 Rocio Salas\nDepilacion (1254)', color: appointmentColors.valoracion },
+      { id: '4', resourceId: 'c', start: new Date(year, month, day, 14, 0), end: new Date(year, month, day, 15, 0), title: '2326 Maria Perez\nValoración (2561)', color: appointmentColors.valoracion },
 
-      { id: '5', resourceId: 'd', start: new Date(year, month, day, 8, 0), end: new Date(year, month, day, 9, 0), title: '2391 Yessica Rios\nDepilacion (1254)', color: '#00FFFF' },
-      { id: '6', resourceId: 'd', start: new Date(year, month, day, 13, 0), end: new Date(year, month, day, 14, 0), title: '2391 Yessica Rios\nDepilacion (1254)', color: '#ADFF2F' },
+      { id: '5', resourceId: 'd', start: new Date(year, month, day, 8, 0), end: new Date(year, month, day, 9, 0), title: '2391 Yessica Rios\nDepilacion (1254)', color: appointmentColors.depilacion },
+      { id: '6', resourceId: 'd', start: new Date(year, month, day, 13, 0), end: new Date(year, month, day, 14, 0), title: '2391 Yessica Rios\nDepilacion (1254)', color: appointmentColors.relleno },
       
-      { id: '7', resourceId: 'e', start: new Date(year, month, day, 9, 0), end: new Date(year, month, day, 11, 0), title: '231 Karla Gonzalez\nRelleno (2865)', color: '#ADFF2F' },
-      { id: '8', resourceId: 'e', start: new Date(year, month, day, 11, 0), end: new Date(year, month, day, 13, 0), title: '2326 Maria Perez\nRelleno (2865)', color: '#ADFF2F' },
-      { id: '9', resourceId: 'e', start: new Date(year, month, day, 13, 0), end: new Date(year, month, day, 14, 0), title: 'COMIDA', color: '#D3D3D3' },
+      { id: '7', resourceId: 'e', start: new Date(year, month, day, 9, 0), end: new Date(year, month, day, 11, 0), title: '231 Karla Gonzalez\nRelleno (2865)', color: appointmentColors.relleno },
+      { id: '8', resourceId: 'e', start: new Date(year, month, day, 11, 0), end: new Date(year, month, day, 13, 0), title: '2326 Maria Perez\nRelleno (2865)', color: appointmentColors.relleno },
+      { id: '9', resourceId: 'e', start: new Date(year, month, day, 13, 0), end: new Date(year, month, day, 14, 0), title: 'COMIDA', color: appointmentColors.comida },
 
     ];
   }

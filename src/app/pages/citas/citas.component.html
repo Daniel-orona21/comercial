@@ -35,7 +35,7 @@
       <button [class.active]="currentView === 'timeGridWeek'" (click)="changeView('timeGridWeek')">
         <span class="material-symbols-outlined">view_week</span> Sem..
       </button>
-      <button [class.active]="currentView === 'resourceTimelineDay'" (click)="changeView('resourceTimelineDay')">
+      <button [class.active]="currentView === 'resourceTimeGridDay'" (click)="changeView('resourceTimeGridDay')">
         <span class="material-symbols-outlined">view_day</span> Día
       </button>
     </div>
@@ -48,8 +48,21 @@
       <span class="material-symbols-outlined">search</span>
       <input type="text" placeholder="Buscar cliente">
     </div>
-    <button class="add-button">
+    <button class="add-button" (click)="openCrearCitaModal()">
       <span class="material-symbols-outlined">add</span>
     </button>
   </div>
 </div>
+
+<app-crear-cita 
+  *ngIf="showCrearCitaModal" 
+  [selectedDate]="selectedDate"
+  [currentView]="currentView"
+  [selectedResourceId]="selectedResourceId"
+  [resources]="getArrayResources()"
+  [slotMinTime]="calendarOptions.slotMinTime?.toString() || '08:00:00'"
+  [slotMaxTime]="calendarOptions.slotMaxTime?.toString() || '20:00:00'"
+  [slotDuration]="calendarOptions.slotDuration?.toString() || '00:15:00'"
+  (close)="onCloseModal()"
+  (save)="onSaveCita($event)">
+</app-crear-cita>

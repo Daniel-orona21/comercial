@@ -61,6 +61,14 @@
   min-height: 0;
   width: 100%;
   max-width: 100%;
+
+  // Make FullCalendar fill the wrapper
+  .fc {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 .sidebar {
@@ -368,5 +376,134 @@
     border-right: none !important;
     border-left: none !important;
     border-bottom: 1px solid #e5e7eb !important;
+  }
+
+  /* --- Event Styling --- */
+  .fc-event {
+    border: none !important;
+    padding: 5px 8px !important;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    }
+  }
+
+  .fc-event-main {
+    color: #1f2937 !important; /* Dark gray for better readability */
+    font-size: 0.8rem;
+    line-height: 1.4;
+  }
+
+  /* Month View Event */
+  .fc-daygrid-event {
+    border-radius: 4px !important;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .fc-daygrid-event .fc-event-title {
+    font-weight: 500;
+  }
+
+  /* Week & Day View Event */
+  .fc-timegrid-event,
+  .fc-timeline-event {
+    border-radius: 6px !important;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  }
+
+  .fc-timegrid-event .fc-event-main,
+  .fc-timeline-event .fc-event-main {
+    white-space: pre-wrap; /* Respect newlines in title */
+  }
+
+  /* Style for event time */
+  .fc-event-time {
+    font-weight: 600;
+  }
+
+  /* --- Resource Header Styling --- */
+  .fc-col-header-cell.fc-resource {
+    background-color: white;
+  }
+
+  .resource-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 0;
+  }
+
+  .resource-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 8px;
+  }
+
+  .resource-name {
+    font-weight: 500;
+    font-size: 14px;
+    color: #374151;
+  }
+  
+  /* --- Time Label Styling (Left Gutter) --- */
+  .fc-timegrid-slot-label-cushion {
+    background-color: #e5e7eb;
+    border-radius: 12px;
+    padding: 2px 8px;
+    font-size: 0.8rem;
+    color: #4b5563;
+  }
+
+  .fc .fc-timegrid-slot-label {
+    border: none;
+    vertical-align: top;
+    padding-top: 8px;
+  }
+
+  // Make the time grid body scrollable
+  .fc-timegrid,
+  .fc-resource-timegrid {
+    display: flex !important;
+    flex-direction: column;
+    height: 100% !important;
+  }
+
+  .fc-timegrid-body,
+  .fc-resource-timegrid-body {
+    flex: 1;
+    overflow-y: auto !important;
+    height: auto !important;
+  }
+
+  .fc-timegrid-body > div,
+  .fc-resource-timegrid-body > div {
+    height: auto !important;
+    min-height: 100%;
+  }
+
+  .fc-timegrid .fc-scroller,
+  .fc-resource-timegrid .fc-scroller {
+    overflow-y: visible !important;
+  }
+
+  .fc-timegrid-slots,
+  .fc-resource-timegrid-slots {
+    height: auto !important;
+  }
+
+  // Keep header fixed
+  .fc-timegrid-header,
+  .fc-resource-timegrid-header {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    background: white;
   }
 }
