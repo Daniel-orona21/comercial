@@ -342,4 +342,31 @@
     white-space: pre-wrap;
     font-size: 12px;
   }
+
+  .fc-daygrid-body,
+  .fc-timegrid-body {
+    width: 100% !important;
+
+    table {
+      width: 100% !important;
+      table-layout: fixed;
+    }
+  }
+
+  /* Ancho para la vista de Día (Resource Timeline) */
+  .fc-resource-timeline .fc-scrollgrid {
+    width: 100% !important;
+    table-layout: fixed;
+  }
+
+  .fc-resource-timeline .fc-datagrid {
+    width: 100% !important; /* Fuerza a la línea de tiempo a ocupar el espacio disponible */
+  }
+
+  // Remove vertical borders and keep horizontal ones
+  .fc-theme-standard td, .fc-theme-standard th {
+    border-right: none !important;
+    border-left: none !important;
+    border-bottom: 1px solid #e5e7eb !important;
+  }
 }

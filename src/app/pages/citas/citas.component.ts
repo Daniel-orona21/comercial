@@ -44,7 +44,7 @@ export class CitasComponent implements AfterViewInit {
     locale: esLocale,
     firstDay: 0,
     dayHeaderContent: (args) => {
-      const days = ['D', 'L', 'M', 'M', 'J', 'V', 'S'];
+      const days = [ 'L', 'M', 'M', 'J', 'V', 'S', 'D'];
       return days[args.date.getDay()];
     },
     
