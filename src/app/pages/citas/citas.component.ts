@@ -38,6 +38,8 @@ export class CitasComponent implements AfterViewInit {
     slotMaxTime: '20:00:00',
     slotDuration: '00:15:00',
     slotLabelInterval: '01:00',
+    fixedWeekCount: false,
+    showNonCurrentDates: true,
     
     views: {
       resourceTimelineDay: {
