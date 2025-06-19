@@ -1,1 +1,446 @@
-<p>expediente works!</p>
+<div class="container-fluid">
+  <div class="expediente-header">
+    <h1>Gestión Expediente</h1>
+    <div class="tabs">
+      <button class="tab-button" [class.active]="activeTab === 'registro'" (click)="selectTab('registro')">
+        <span class="material-symbols-outlined">add_circle</span>
+        Registro
+      </button>
+      <button class="tab-button" [class.active]="activeTab === 'historia'" (click)="selectTab('historia')">
+        <span class="material-symbols-outlined">description</span>
+        Historia Clínica
+      </button>
+      <button class="tab-button" [class.active]="activeTab === 'tratamientos'" (click)="selectTab('tratamientos')">
+        <span class="material-symbols-outlined">vaccines</span>
+        Tratamientos
+      </button>
+      <button class="tab-button" [class.active]="activeTab === 'citas'" (click)="selectTab('citas')">
+        <span class="material-symbols-outlined">calendar_today</span>
+        Histórico de citas
+      </button>
+    </div>
+  </div>
+
+  <div class="tab-content">
+    <!-- Registro Tab -->
+    <div class="content-wrapper" *ngIf="activeTab === 'registro'">
+      <div class="card">
+        <div class="card-body">
+          <div class="id-badge">ID: 21</div>
+          <form class="form-grid">
+            <div class="form-group">
+              <label for="nombres">Nombre(s)</label>
+              <input type="text" id="nombres">
+            </div>
+            <div class="form-group">
+              <label for="apellidos">Apellidos</label>
+              <input type="text" id="apellidos">
+            </div>
+            <div class="form-group">
+              <label for="sucursal-registro">Sucursal</label>
+              <div class="select-wrapper">
+                <select id="sucursal-registro">
+                  <option value="" disabled selected>Seleccionar</option>
+                </select>
+                <span class="material-symbols-outlined">keyboard_arrow_down</span>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="email">Correo electrónico</label>
+              <input type="email" id="email">
+            </div>
+            <div class="form-group">
+              <label for="genero">Género</label>
+              <div class="select-wrapper">
+                <select id="genero">
+                  <option value="" disabled selected>Seleccionar</option>
+                </select>
+                <span class="material-symbols-outlined">keyboard_arrow_down</span>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="fecha-nacimiento">Fecha de nacimiento</label>
+              <div class="date-input">
+                <input type="text" id="fecha-nacimiento" placeholder="DD/MM/AAAA">
+                <span class="material-symbols-outlined">calendar_today</span>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="direccion-registro">Dirección</label>
+              <div class="location-input">
+                <input type="text" id="direccion-registro">
+                <span class="material-symbols-outlined">location_on</span>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="estatus-registro">Estatus</label>
+              <div class="select-wrapper">
+                <select id="estatus-registro">
+                  <option value="" disabled selected>Seleccionar</option>
+                </select>
+                <span class="material-symbols-outlined">keyboard_arrow_down</span>
+              </div>
+            </div>
+            <div class="form-group full-width-sm">
+              <div class="privacy-policy">
+                <input type="checkbox" id="privacy">
+                <label for="privacy">Política de privacidad</label>
+                <p>Al marcar este campo el "cliente" acepta la politica de privacidad.</p>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="card-footer">
+                <button class="btn btn-secondary">
+                  <span class="material-symbols-outlined">arrow_back</span>
+                  Cancelar
+                </button>
+                <button class="btn btn-primary">
+                  <span class="material-symbols-outlined">edit</span>
+                  Actualizar
+                </button>
+            <button class="btn btn-success">
+                <span class="material-symbols-outlined">save</span>
+                Guardar
+            </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Historia Clínica Tab -->
+    <div class="content-wrapper" *ngIf="activeTab === 'historia'">
+      <div class="card">
+        <div class="card-body">
+          <div class="card-header">
+            <h2 class="section-title">Historia Clínica</h2>
+            <div class="id-badge">ID: 21</div>
+          </div>
+          <form class="form-grid">
+            <div class="form-group">
+              <label for="sucursal-historia">Sucursal</label>
+              <div class="select-wrapper">
+                <select id="sucursal-historia" [(ngModel)]="newHistoriaItem.sucursal" name="sucursal-historia">
+                  <option>CDMX</option>
+                  <option>Otra Sucursal</option>
+                </select>
+                <span class="material-symbols-outlined">keyboard_arrow_down</span>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="direccion-historia">Dirección</label>
+              <div class="location-input">
+                <input type="text" id="direccion-historia" [(ngModel)]="newHistoriaItem.direccion" name="direccion-historia">
+                <span class="material-symbols-outlined">location_on</span>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="fecha-registro">Fecha de registro</label>
+              <div class="date-input">
+                <input type="text" id="fecha-registro" placeholder="DD/MM/AAAA" [(ngModel)]="newHistoriaItem.fecha" name="fecha-registro">
+                <span class="material-symbols-outlined">calendar_today</span>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="profesional">Profesional Encargado</label>
+              <div class="select-wrapper">
+                <select id="profesional" [(ngModel)]="newHistoriaItem.pEncargado" name="profesional">
+                  <option>JOEL RUIZ</option>
+                  <option>Otro Profesional</option>
+                </select>
+                <span class="material-symbols-outlined">keyboard_arrow_down</span>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="tipo-documento">Tipo de Documento</label>
+              <div class="select-wrapper">
+                <select id="tipo-documento" [(ngModel)]="newHistoriaItem.tipoDocumento" name="tipo-documento">
+                  <option>Seleccionar</option>
+                  <option>Consentimiento</option>
+                  <option>Presupuesto</option>
+                </select>
+                <span class="material-symbols-outlined">keyboard_arrow_down</span>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Adjuntar documentos</label>
+              <div class="file-upload">
+                <input type="file" id="file-upload" (change)="onFileSelected($event)" hidden multiple>
+                <label for="file-upload" class="file-upload-label">
+                  <span class="material-symbols-outlined">upload</span>
+                  <div *ngIf="documentos.length > 0" class="file-list">
+                    <div *ngFor="let file of documentos; let i = index" class="file-item">
+                      <span>{{ file.name }}</span>
+                      <button (click)="removeDocumento(i)">&times;</button>
+                    </div>
+                  </div>
+                </label>
+              </div>
+            </div>
+            <div class="form-group full-width-sm">
+              <label for="notas">Notas del cliente (Alergias, patologías, enfermedades)</label>
+              <textarea id="notas" rows="1"></textarea>
+            </div>
+            <div class="form-group full-width text-right">
+              <button class="btn btn-add" (click)="addHistoriaItem()">Añadir</button>
+            </div>
+          </form>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Sucursal</th>
+                <th>Dirección</th>
+                <th>P. Encargado</th>
+                <th>Fecha</th>
+                <th>Documento Adjunto</th>
+                <th>Acción</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of historiaClinicaItems">
+                <td>{{ item.sucursal }}</td>
+                <td>{{ item.direccion }}</td>
+                <td>{{ item.pEncargado }}</td>
+                <td>{{ item.fecha }}</td>
+                <td [innerHTML]="item.documentoAdjunto"></td>
+                <td class="actions">
+                  <button class="btn-icon"><span class="material-symbols-outlined">visibility</span></button>
+                  <button class="btn-icon"><span class="material-symbols-outlined">edit</span></button>
+                  <button class="btn-icon"><span class="material-symbols-outlined">delete</span></button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card-footer">
+          <button class="btn btn-secondary">
+            <span class="material-symbols-outlined">arrow_back</span>
+            Cancelar
+          </button>
+          <button class="btn btn-success">
+            <span class="material-symbols-outlined">save</span>
+            Guardar
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tratamientos Tab -->
+    <div class="content-wrapper" *ngIf="activeTab === 'tratamientos'">
+      <div class="card">
+        <div class="card-body">
+          <div class="card-header">
+            <h2 class="section-title">Tratamientos</h2>
+            <div class="id-badge">ID: 25</div>
+          </div>
+          <form class="form-grid">
+            <div class="form-group">
+              <label for="sucursal-tratamiento">Sucursal</label>
+              <div class="select-wrapper">
+                <select id="sucursal-tratamiento"></select>
+                <span class="material-symbols-outlined">keyboard_arrow_down</span>
+              </div>
+            </div>
+            <div class="form-group">
+                <label for="direccion-tratamiento">Dirección</label>
+                <div class="location-input">
+                  <input type="text" id="direccion-tratamiento">
+                  <span class="material-symbols-outlined">location_on</span>
+                </div>
+              </div>
+            <div class="form-group">
+              <label for="profesional-tratamiento">Profesional Encargado</label>
+              <div class="select-wrapper">
+                <select id="profesional-tratamiento"></select>
+                <span class="material-symbols-outlined">keyboard_arrow_down</span>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="fecha-registro-tratamiento">Fecha de registro</label>
+              <div class="date-input">
+                <input type="text" id="fecha-registro-tratamiento" placeholder="DD/MM/AAAA">
+                <span class="material-symbols-outlined">calendar_today</span>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="tipo-tratamiento">Tipo de tratamiento</label>
+              <div class="select-wrapper">
+                <select id="tipo-tratamiento"></select>
+                <span class="material-symbols-outlined">keyboard_arrow_down</span>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="cliente-tratamiento">Cliente</label>
+              <div class="select-wrapper">
+                <select id="cliente-tratamiento"></select>
+                <span class="material-symbols-outlined">keyboard_arrow_down</span>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Adjuntar documentos</label>
+              <div class="file-upload">
+                <input type="file" id="file-upload-tratamiento" hidden>
+                <label for="file-upload-tratamiento" class="file-upload-label">
+                  <span class="material-symbols-outlined">upload</span>
+                </label>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="descripcion-tratamiento">Descripción (opcional)</label>
+              <textarea id="descripcion-tratamiento" rows="1"></textarea>
+            </div>
+            <div class="form-group full-width text-right">
+              <button class="btn btn-add">Añadir</button>
+            </div>
+          </form>
+          <table class="table">
+            <thead>
+              <tr>
+                <th><input type="checkbox"></th>
+                <th>ID</th>
+                <th>Estatus</th>
+                <th>Sucursal</th>
+                <th>Dirección</th>
+                <th>Fecha</th>
+                <th>P. Encargado</th>
+                <th>Cliente</th>
+                <th>T. Tratamiento</th>
+                <th>Documentos Adjuntos</th>
+                <th>Acción</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><input type="checkbox"></td>
+                <td>21</td>
+                <td><span class="status pagado">Pagado</span></td>
+                <td>CDMX</td>
+                <td>PRIVADA UNION 10, COL. AGRICOLA PANTITLAN, IZTACALCO, 08100, CIUDAD DE MEXICO, CDMX, MEXICO.</td>
+                <td>22/05/2025</td>
+                <td>JOEL RUIZ</td>
+                <td>IRMA BEJAR</td>
+                <td>FACIAL</td>
+                <td>PROTOCOLO.pdf<br>HOJA DE SEGURIMIENTO.pdf</td>
+                <td class="actions">
+                  <button class="btn-icon"><span class="material-symbols-outlined">visibility</span></button>
+                  <button class="btn-icon"><span class="material-symbols-outlined">edit</span></button>
+                  <button class="btn-icon"><span class="material-symbols-outlined">delete</span></button>
+                </td>
+              </tr>
+              <tr>
+                <td><input type="checkbox"></td>
+                <td>24</td>
+                <td><span class="status activo">Activo</span></td>
+                <td>CDMX</td>
+                <td>PRIVADA UNION 10, COL. AGRICOLA PANTITLAN, IZTACALCO, 08100, CIUDAD DE MEXICO, CDMX, MEXICO.</td>
+                <td>05/06/2025</td>
+                <td>JOEL RUIZ</td>
+                <td>IRMA BEJAR</td>
+                <td>FACIAL</td>
+                <td>PROTOCOLO.pdf<br>HOJA DE SEGURIMIENTO.pdf</td>
+                <td class="actions">
+                    <button class="btn-icon"><span class="material-symbols-outlined">visibility</span></button>
+                    <button class="btn-icon"><span class="material-symbols-outlined">edit</span></button>
+                    <button class="btn-icon"><span class="material-symbols-outlined">delete</span></button>
+                  </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card-footer">
+            <button class="btn btn-secondary">
+              <span class="material-symbols-outlined">arrow_back</span>
+              Cancelar
+            </button>
+            <div>
+              <button class="btn btn-success">
+                <span class="material-symbols-outlined">save</span>
+                Guardar
+              </button>
+              <button class="btn btn-purple">
+                Pasar a PV
+              </button>
+            </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Histórico de Citas Tab -->
+    <div class="content-wrapper" *ngIf="activeTab === 'citas'">
+      <div class="card">
+        <div class="card-body">
+            <div class="citas-header">
+                <h2 class="section-title">Histórico de citas</h2>
+                <div class="date-input">
+                    <input type="text" placeholder="Fecha">
+                    <span class="material-symbols-outlined">calendar_today</span>
+                </div>
+            </div>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Paciente</th>
+                <th>Sucursal</th>
+                <th>Dirección</th>
+                <th>Fecha</th>
+                <th>P. Encargado</th>
+                <th>T. Cita</th>
+                <th>T. Tratamiento</th>
+                <th>Estatus</th>
+                <th>Documentos Adjuntos</th>
+                <th>Acción</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>21</td>
+                <td>IRMA BEJAR</td>
+                <td>CDMX</td>
+                <td>PRIVADA UNION 10, COL. AGRICOLA PANTITLAN, IZTACALCO, 08100, CIUDAD DE MEXICO, CDMX, MEXICO.</td>
+                <td>22/05/2025</td>
+                <td>JOEL RUIZ</td>
+                <td>IRMA BEJAR</td>
+                <td>FACIAL</td>
+                <td><span class="status asistida">ASISTIDA</span></td>
+                <td>PROTOCOLO.pdf<br>HOJA DE SEGUMIENTO.pdf</td>
+                <td class="actions">
+                  <button class="btn-icon"><span class="material-symbols-outlined">visibility</span></button>
+                </td>
+              </tr>
+              <tr>
+                <td>24</td>
+                <td>IRMA BEJAR</td>
+                <td>CDMX</td>
+                <td>PRIVADA UNION 10, COL. AGRICOLA PANTITLAN, IZTACALCO, 08100, CIUDAD DE MEXICO, CDMX, MEXICO.</td>
+                <td>05/06/2025</td>
+                <td>JOEL RUIZ</td>
+                <td>IRMA BEJAR</td>
+                <td>FACIAL</td>
+                <td><span class="status asistida">ASISTIDA</span></td>
+                <td>PROTOCOLO.pdf<br>HOJA DE SEGUMIENTO.pdf</td>
+                <td class="actions">
+                  <button class="btn-icon"><span class="material-symbols-outlined">visibility</span></button>
+                </td>
+              </tr>
+              <tr>
+                <td>25</td>
+                <td>IRMA BEJAR</td>
+                <td>CDMX</td>
+                <td>PRIVADA UNION 10, COL. AGRICOLA PANTITLAN, IZTACALCO, 08100, CIUDAD DE MEXICO, CDMX, MEXICO.</td>
+                <td>10/06/2025</td>
+                <td>JOEL RUIZ</td>
+                <td>IRMA BEJAR</td>
+                <td>FACIAL</td>
+                <td><span class="status reprogramada">REPROGRAMADA</span></td>
+                <td>PROTOCOLO.pdf<br>HOJA DE SEGUMIENTO.pdf</td>
+                <td class="actions">
+                  <button class="btn-icon"><span class="material-symbols-outlined">visibility</span></button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
