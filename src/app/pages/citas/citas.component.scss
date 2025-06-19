@@ -226,6 +226,21 @@
     }
   }
 
+  // Align headers and day numbers to the right
+  .fc-col-header-cell-cushion {
+    text-align: right !important;
+    width: 100% !important;
+    display: block !important;
+    padding-right: 10px !important;
+  }
+
+  .fc-daygrid-day-number {
+    text-align: right !important;
+    width: 100% !important;
+    display: block !important;
+    padding-right: 10px !important;
+  }
+
   // Remove vertical borders and keep horizontal ones
   .fc-theme-standard td, .fc-theme-standard th {
     border-right: none !important;

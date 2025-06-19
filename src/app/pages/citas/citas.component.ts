@@ -6,6 +6,7 @@ import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import resourceTimelinePlugin from '@fullcalendar/resource-timeline';
 import { CommonModule } from '@angular/common';
+import esLocale from '@fullcalendar/core/locales/es';
 
 @Component({
   selector: 'app-citas',
@@ -40,6 +41,12 @@ export class CitasComponent implements AfterViewInit {
     slotLabelInterval: '01:00',
     fixedWeekCount: false,
     showNonCurrentDates: true,
+    locale: esLocale,
+    firstDay: 0,
+    dayHeaderContent: (args) => {
+      const days = ['D', 'L', 'M', 'M', 'J', 'V', 'S'];
+      return days[args.date.getDay()];
+    },
     
     views: {
       resourceTimelineDay: {
