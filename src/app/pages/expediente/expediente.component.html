@@ -228,68 +228,84 @@
     <div class="content-wrapper" *ngIf="activeTab === 'tratamientos'">
       <div class="card">
         <div class="card-body">
-          <div class="card-header">
-            <h2 class="section-title">Tratamientos</h2>
-            <div class="id-badge">ID: 25</div>
-          </div>
+          <h2 class="section-title">Tratamientos</h2>
+          <div class="id-badge">ID: 25</div>
           <form class="form-grid">
             <div class="form-group">
               <label for="sucursal-tratamiento">Sucursal</label>
               <div class="select-wrapper">
-                <select id="sucursal-tratamiento"></select>
+                <select id="sucursal-tratamiento" name="sucursal-tratamiento" [(ngModel)]="newTratamientoItem.sucursal">
+                  <option>CDMX</option>
+                  <option>Otra</option>
+                </select>
                 <span class="material-symbols-outlined">keyboard_arrow_down</span>
               </div>
             </div>
             <div class="form-group">
-                <label for="direccion-tratamiento">Dirección</label>
-                <div class="location-input">
-                  <input type="text" id="direccion-tratamiento">
-                  <span class="material-symbols-outlined">location_on</span>
-                </div>
+              <label for="direccion-tratamiento">Dirección</label>
+              <div class="location-input">
+                <input type="text" id="direccion-tratamiento" name="direccion-tratamiento" [(ngModel)]="newTratamientoItem.direccion">
+                <span class="material-symbols-outlined">location_on</span>
               </div>
+            </div>
             <div class="form-group">
               <label for="profesional-tratamiento">Profesional Encargado</label>
               <div class="select-wrapper">
-                <select id="profesional-tratamiento"></select>
+                <select id="profesional-tratamiento" name="profesional-tratamiento" [(ngModel)]="newTratamientoItem.pEncargado">
+                  <option>JOEL RUIZ</option>
+                  <option>Otro</option>
+                </select>
                 <span class="material-symbols-outlined">keyboard_arrow_down</span>
               </div>
             </div>
             <div class="form-group">
               <label for="fecha-registro-tratamiento">Fecha de registro</label>
               <div class="date-input">
-                <input type="text" id="fecha-registro-tratamiento" placeholder="DD/MM/AAAA">
+                <input type="text" id="fecha-registro-tratamiento" placeholder="DD/MM/AAAA" name="fecha-registro-tratamiento" [(ngModel)]="newTratamientoItem.fecha">
                 <span class="material-symbols-outlined">calendar_today</span>
               </div>
             </div>
             <div class="form-group">
               <label for="tipo-tratamiento">Tipo de tratamiento</label>
               <div class="select-wrapper">
-                <select id="tipo-tratamiento"></select>
+                <select id="tipo-tratamiento" name="tipo-tratamiento" [(ngModel)]="newTratamientoItem.tratamiento">
+                  <option>FACIAL</option>
+                  <option>CORPORAL</option>
+                </select>
                 <span class="material-symbols-outlined">keyboard_arrow_down</span>
               </div>
             </div>
             <div class="form-group">
               <label for="cliente-tratamiento">Cliente</label>
               <div class="select-wrapper">
-                <select id="cliente-tratamiento"></select>
+                <select id="cliente-tratamiento" name="cliente-tratamiento" [(ngModel)]="newTratamientoItem.cliente">
+                  <option>IRMA BEJAR</option>
+                  <option>Otro</option>
+                </select>
                 <span class="material-symbols-outlined">keyboard_arrow_down</span>
               </div>
             </div>
             <div class="form-group">
+              <label for="descripcion-tratamiento">Descripción (opcional)</label>
+              <textarea id="descripcion-tratamiento" rows="1" name="descripcion-tratamiento" [(ngModel)]="newTratamientoItem.descripcion"></textarea>
+            </div>
+            <div class="form-group">
               <label>Adjuntar documentos</label>
               <div class="file-upload">
-                <input type="file" id="file-upload-tratamiento" hidden>
+                <input type="file" id="file-upload-tratamiento" (change)="onTratamientoFileSelected($event)" hidden multiple>
                 <label for="file-upload-tratamiento" class="file-upload-label">
                   <span class="material-symbols-outlined">upload</span>
+                   <div *ngIf="tratamientoDocumentos.length > 0" class="file-list">
+                    <div *ngFor="let file of tratamientoDocumentos; let i = index" class="file-item">
+                      <span>{{ file.name }}</span>
+                      <button (click)="removeTratamientoDocumento(i)">&times;</button>
+                    </div>
+                  </div>
                 </label>
               </div>
             </div>
-            <div class="form-group">
-              <label for="descripcion-tratamiento">Descripción (opcional)</label>
-              <textarea id="descripcion-tratamiento" rows="1"></textarea>
-            </div>
             <div class="form-group full-width text-right">
-              <button class="btn btn-add">Añadir</button>
+              <button class="btn btn-add" (click)="addTratamientoItem()">Añadir</button>
             </div>
           </form>
           <table class="table">
@@ -309,39 +325,22 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td><input type="checkbox"></td>
-                <td>21</td>
-                <td><span class="status pagado">Pagado</span></td>
-                <td>CDMX</td>
-                <td>PRIVADA UNION 10, COL. AGRICOLA PANTITLAN, IZTACALCO, 08100, CIUDAD DE MEXICO, CDMX, MEXICO.</td>
-                <td>22/05/2025</td>
-                <td>JOEL RUIZ</td>
-                <td>IRMA BEJAR</td>
-                <td>FACIAL</td>
-                <td>PROTOCOLO.pdf<br>HOJA DE SEGURIMIENTO.pdf</td>
+              <tr *ngFor="let item of tratamientosItems">
+                <td><input type="checkbox" [(ngModel)]="item.selected" name="selected-{{item.id}}"></td>
+                <td>{{item.id}}</td>
+                <td><span class="status" [ngClass]="{'pagado': item.estatus === 'Pagado', 'activo': item.estatus === 'Activo'}">{{item.estatus}}</span></td>
+                <td>{{item.sucursal}}</td>
+                <td>{{item.direccion}}</td>
+                <td>{{item.fecha}}</td>
+                <td>{{item.pEncargado}}</td>
+                <td>{{item.cliente}}</td>
+                <td>{{item.tratamiento}}</td>
+                <td [innerHTML]="item.documentosAdjuntos"></td>
                 <td class="actions">
                   <button class="btn-icon"><span class="material-symbols-outlined">visibility</span></button>
                   <button class="btn-icon"><span class="material-symbols-outlined">edit</span></button>
                   <button class="btn-icon"><span class="material-symbols-outlined">delete</span></button>
                 </td>
-              </tr>
-              <tr>
-                <td><input type="checkbox"></td>
-                <td>24</td>
-                <td><span class="status activo">Activo</span></td>
-                <td>CDMX</td>
-                <td>PRIVADA UNION 10, COL. AGRICOLA PANTITLAN, IZTACALCO, 08100, CIUDAD DE MEXICO, CDMX, MEXICO.</td>
-                <td>05/06/2025</td>
-                <td>JOEL RUIZ</td>
-                <td>IRMA BEJAR</td>
-                <td>FACIAL</td>
-                <td>PROTOCOLO.pdf<br>HOJA DE SEGURIMIENTO.pdf</td>
-                <td class="actions">
-                    <button class="btn-icon"><span class="material-symbols-outlined">visibility</span></button>
-                    <button class="btn-icon"><span class="material-symbols-outlined">edit</span></button>
-                    <button class="btn-icon"><span class="material-symbols-outlined">delete</span></button>
-                  </td>
               </tr>
             </tbody>
           </table>
@@ -351,15 +350,14 @@
               <span class="material-symbols-outlined">arrow_back</span>
               Cancelar
             </button>
-            <div>
               <button class="btn btn-success">
                 <span class="material-symbols-outlined">save</span>
                 Guardar
               </button>
               <button class="btn btn-purple">
+                <span class="material-symbols-outlined">save</span>
                 Pasar a PV
               </button>
-            </div>
         </div>
       </div>
     </div>

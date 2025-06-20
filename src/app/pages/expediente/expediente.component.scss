@@ -227,9 +227,7 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
-  margin-top: 16px;
   width: 100%;
-  padding: 0 16px;
 }
 
 .file-item {
@@ -275,8 +273,13 @@
     }
 
     &.btn-success {
-        background-color: #dcfce7;
-        color: #166534;
+        background-color: $boton-secundario;
+        color: $color-principal;
+        border-color: $color-principal;
+
+        &:hover {
+            background-color: $boton-secundario-hover;
+        }
     }
 
     &.btn-add {
@@ -289,8 +292,13 @@
     }
 
     &.btn-purple {
-        background-color: $color-principal;
-        color: white;
+        background-color: $boton-fondo;
+        color: $boton;
+        border-color: $boton;
+
+        &:hover {
+            background-color: $boton-fondo-hover;
+        }
     }
 }
 

@@ -32,20 +32,20 @@
     }
 
     .status-tab {
-        display: flex;
-        align-items: center;
+            display: flex;
+            align-items: center;
         gap: 8px;
         padding: 10px 20px;
-        border: none;
-        background-color: transparent;
+            border: none;
+            background-color: transparent;
         border-radius: 8px;
-        cursor: pointer;
-        font-size: 1rem;
-        font-weight: 500;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
         color: #5b21b6;
         transition: all 0.2s ease;
 
-        &.active {
+            &.active {
             background-color: #ffffff;
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
         }
@@ -92,7 +92,7 @@
         border: 1px solid #d1d5db;
         border-radius: 8px;
         background-color: #f9fafb;
-    }
+        }
 }
 
 .table {
@@ -108,21 +108,21 @@
 
     thead th {
         background-color: #f3f4f6;
-        font-weight: 600;
+            font-weight: 600;
         color: #374151;
     }
 
     tbody td {
         color: #4b5563;
+        }
     }
-}
 
 .quantity-input {
     input {
         width: 80px;
         text-align: center;
         border: 1px solid #d1d5db;
-        border-radius: 8px;
+            border-radius: 8px;
         padding: 8px;
     }
 }
@@ -134,18 +134,18 @@
     gap: 16px;
 }
 
-.summary-item {
-    display: flex;
-    justify-content: space-between;
-    width: 300px;
-    font-size: 1rem;
+    .summary-item {
+        display: flex;
+        justify-content: space-between;
+        width: 300px;
+        font-size: 1rem;
 
-    span:first-child {
+        span:first-child {
         color: #6b7280;
-    }
+        }
 
-    span:last-child {
-        font-weight: 600;
+        span:last-child {
+            font-weight: 600;
         color: #1f2937;
     }
 

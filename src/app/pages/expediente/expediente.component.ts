@@ -35,6 +35,47 @@ export class ExpedienteComponent {
 
   documentos: File[] = [];
 
+  // Data for Tratamientos
+  tratamientosItems: any[] = [
+    {
+      id: 21,
+      estatus: 'Pagado',
+      sucursal: 'CDMX',
+      direccion: 'PRIVADA UNION 10, COL. AGRICOLA PANTITLAN, IZTACALCO, 08100, CIUDAD DE MEXICO, CDMX, MEXICO.',
+      fecha: '22/05/2025',
+      pEncargado: 'JOEL RUIZ',
+      cliente: 'IRMA BEJAR',
+      tratamiento: 'FACIAL',
+      documentosAdjuntos: 'PROTOCOLO.pdf<br>HOJA DE SEGURIMIENTO.pdf',
+      selected: false
+    },
+    {
+      id: 24,
+      estatus: 'Activo',
+      sucursal: 'CDMX',
+      direccion: 'PRIVADA UNION 10, COL. AGRICOLA PANTITLAN, IZTACALCO, 08100, CIUDAD DE MEXICO, CDMX, MEXICO.',
+      fecha: '05/06/2025',
+      pEncargado: 'JOEL RUIZ',
+      cliente: 'IRMA BEJAR',
+      tratamiento: 'FACIAL',
+      documentosAdjuntos: 'PROTOCOLO.pdf<br>HOJA DE SEGURIMIENTO.pdf',
+      selected: false
+    }
+  ];
+  newTratamientoItem: any = {
+    id: null,
+    estatus: 'Activo',
+    sucursal: 'CDMX',
+    direccion: 'PRIVADA UNION 10, COL. AGRICOLA PANTITLAN, IZTACALCO, 08100, CIUDAD DE MEXICO, CDMX, MEXICO.',
+    fecha: new Date().toLocaleDateString('es-ES', { day: '2-digit', month: '2-digit', year: 'numeric' }),
+    pEncargado: 'JOEL RUIZ',
+    cliente: 'IRMA BEJAR',
+    tratamiento: 'FACIAL',
+    documentosAdjuntos: '',
+    selected: false
+  };
+  tratamientoDocumentos: File[] = [];
+
   selectTab(tab: string) {
     this.activeTab = tab;
   }
@@ -61,10 +102,39 @@ export class ExpedienteComponent {
   addHistoriaItem(): void {
     if (this.newHistoriaItem.documentoAdjunto) {
       this.historiaClinicaItems.push({ ...this.newHistoriaItem });
-      // Reset fields
       this.documentos = [];
       this.newHistoriaItem.documentoAdjunto = '';
       this.newHistoriaItem.tipoDocumento = 'Seleccionar';
+    }
+  }
+
+  onTratamientoFileSelected(event: any): void {
+    const files = event.target.files;
+    if (files) {
+      for (let i = 0; i < files.length; i++) {
+        this.tratamientoDocumentos.push(files[i]);
+      }
+      this.updateTratamientoDocumentoAdjunto();
+    }
+  }
+
+  removeTratamientoDocumento(index: number): void {
+    this.tratamientoDocumentos.splice(index, 1);
+    this.updateTratamientoDocumentoAdjunto();
+  }
+
+  updateTratamientoDocumentoAdjunto(): void {
+    this.newTratamientoItem.documentosAdjuntos = this.tratamientoDocumentos.map(f => f.name).join('<br>');
+  }
+
+  addTratamientoItem(): void {
+    if (this.newTratamientoItem.tratamiento) {
+      this.newTratamientoItem.id = this.tratamientosItems.length + 26;
+      this.tratamientosItems.push({ ...this.newTratamientoItem });
+      
+      this.tratamientoDocumentos = [];
+      this.newTratamientoItem.documentosAdjuntos = '';
+      this.newTratamientoItem.descripcion = '';
     }
   }
 }
