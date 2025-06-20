@@ -1,1 +1,409 @@
-<p>punto-de-venta works!</p>
+<div class="container-fluid">
+  <div class="pdv-header">
+    <h1>Punto de venta</h1>
+    <div class="tabs">
+      <button class="tab-button" [class.active]="activeTab === 'ventas'" (click)="selectTab('ventas')">
+        <span class="material-symbols-outlined">receipt_long</span>
+        Ventas
+      </button>
+      <button class="tab-button" [class.active]="activeTab === 'punto-de-venta'" (click)="selectTab('punto-de-venta')">
+        <span class="material-symbols-outlined">point_of_sale</span>
+        Punto de venta
+      </button>
+      <button class="tab-button" [class.active]="activeTab === 'historial'" (click)="selectTab('historial')">
+        <span class="material-symbols-outlined">history</span>
+        Historial de ventas
+      </button>
+    </div>
+  </div>
+
+  <div class="tab-content">
+    <!-- Punto de Venta Tab -->
+    <div class="content-wrapper" *ngIf="activeTab === 'ventas'">
+      <div class="card">
+        <div class="card-body">
+            <div class="folio-container">
+              <div class="folio">FOLIO: S05882506</div>
+              <div class="checkbox-container">
+                <div class="checkbox-group grid-col-2">
+                    <input type="checkbox" id="venta-grupal">
+                    <label for="venta-grupal">Venta grupal</label>
+                </div>
+                <div class="checkbox-group grid-col-2">
+                    <input type="checkbox" id="venta-publico" checked>
+                    <label for="venta-publico">Venta publico en general</label>
+                </div>
+              </div>
+            </div>
+            <form class="form-grid">
+                <!-- Row 1 -->
+                <div class="form-group grid-col-4">
+                    <label for="cliente">Cliente</label>
+                    <div class="input-wrapper">
+                        <select id="cliente">
+                            <option>2358 - Luisa Fernández Gomez</option>
+                        </select>
+                        <span class="material-symbols-outlined">keyboard_arrow_down</span>
+                    </div>
+                </div>
+                <div class="form-group grid-col-2">
+                    <label for="estado">Estado</label>
+                    <div class="estado-info">Información faltante</div>
+                </div>
+                 <button class="btn-flotante grid-col-2">
+                    <span class="material-symbols-outlined">group</span>
+                    clientes
+                </button>
+
+                <!-- Row 2 -->
+                <div class="form-group grid-col-3">
+                    <label for="vendedor">Vendedor</label>
+                    <div class="input-wrapper">
+                        <select id="vendedor">
+                            <option>Jorge Herrera</option>
+                        </select>
+                        <span class="material-symbols-outlined">keyboard_arrow_down</span>
+                    </div>
+                </div>
+                <div class="form-group grid-col-2">
+                    <label for="fecha">Fecha</label>
+                    <div class="input-wrapper">
+                        <input type="text" id="fecha" value="05/06/2025">
+                        <span class="material-symbols-outlined clickable">calendar_today</span>
+                    </div>
+                </div>
+                <div class="form-group grid-col-3">
+                    <label for="forma-pago">Forma de pago</label>
+                    <div class="input-wrapper">
+                        <select id="forma-pago">
+                            <option>PUE - Sola exhibición</option>
+                        </select>
+                        <span class="material-symbols-outlined">keyboard_arrow_down</span>
+                    </div>
+                </div>
+                <div class="form-group grid-col-2">
+                  <label for="no-pagos">No. pagos (PPD)</label>
+                  <input type="text" id="no-pagos" value="ppd" disabled style="background-color: #e5e7eb;">
+                </div>
+                <div class="form-group grid-col-2">
+                    <label for="vencimiento">Vencimiento</label>
+                    <div class="input-wrapper">
+                        <input type="text" id="vencimiento" value="05/06/2025">
+                        <span class="material-symbols-outlined clickable">calendar_today</span>
+                    </div>
+                </div>
+                
+                <!-- Row 3 -->
+                <div class="form-group grid-col-2">
+                    <label for="tipo-venta">Tipo de venta</label>
+                    <div class="input-wrapper">
+                        <select id="tipo-venta">
+                            <option>Producto</option>
+                        </select>
+                        <span class="material-symbols-outlined">keyboard_arrow_down</span>
+                    </div>
+                </div>
+                <div class="form-group grid-col-4">
+                    <label for="catalogo">Catálogo de productos/servicios/paquetes</label>
+                    <div class="input-wrapper">
+                        <input type="text" id="catalogo" value="MSC23 - Mascarilla 3 en 1 c/Acido Salicílico...">
+                        <span class="material-symbols-outlined clickable">search</span>
+                    </div>
+                </div>
+                <div class="form-group grid-col-2">
+                    <label for="precio">Precio</label>
+                    <div class="input-wrapper">
+                        <input type="text" id="precio" value="$400.00">
+                    </div>
+                </div>
+                 <div class="form-group grid-col-2">
+                    <label for="subtotal">Promociones</label>
+                    <div class="input-wrapper">
+                        <select id="promociones">
+                            <option>Promociones</option>
+                        </select>
+                        <span class="material-symbols-outlined">keyboard_arrow_down</span>
+                    </div>
+                </div>
+                <div class="form-group grid-col-2">
+                    <label for="codigo">Código</label>
+                    <div class="input-wrapper">
+                        <input type="text" id="codigo" value="SK2025TF">
+                        <span class="material-symbols-outlined" style="color: green;">check_circle</span>
+                    </div>
+                </div>
+
+                <!-- Row 4 -->
+                 <div class="grid-col-12" style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <span class="descuento-aplicado">Descuento aplicado: <strong>$40.00 off</strong></span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 16px;">
+                        <span style="font-size: 1.2rem; font-weight: 600;">Total: <strong style="color: #6b21a8;">$360.00</strong></span>
+                        <button class="btn-anadir">
+                            <span class="material-symbols-outlined">add</span> Añadir
+                        </button>
+                    </div>
+                </div>
+            </form>
+            
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Producto/servicio</th>
+                        <th>SKU</th>
+                        <th>Cantidad</th>
+                        <th>UM</th>
+                        <th>Descuento %</th>
+                        <th>IVA</th>
+                        <th>Total</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Acido hialuronico</td>
+                        <td>AC002D</td>
+                        <td>1</td>
+                        <td>PZ</td>
+                        <td>5</td>
+                        <td>$550.00</td>
+                        <td>$2,750.00</td>
+                        <td><span class="material-symbols-outlined">delete</span></td>
+                    </tr>
+                    <tr>
+                        <td>Oxidermic Dermo</td>
+                        <td>OXID24</td>
+                        <td>1</td>
+                        <td>PZ</td>
+                        <td>10</td>
+                        <td>$1,027.50</td>
+                        <td>$10,275.00</td>
+                        <td><span class="material-symbols-outlined">delete</span></td>
+                    </tr>
+                    <tr>
+                        <td>Suvenil Coleur</td>
+                        <td>SUN880</td>
+                        <td>1</td>
+                        <td>PZ</td>
+                        <td>15</td>
+                        <td>$980.00</td>
+                        <td>$14,700.00</td>
+                        <td><span class="material-symbols-outlined">delete</span></td>
+                    </tr>
+                    <tr>
+                        <td>Regenue100</td>
+                        <td>DMZ100</td>
+                        <td>1</td>
+                        <td>PZ</td>
+                        <td>10</td>
+                        <td>$650.00</td>
+                        <td>$6,500.00</td>
+                        <td><span class="material-symbols-outlined">delete</span></td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="form-grid">
+                <div class="form-group grid-col-8">
+                    <label for="notas">Notas (opcional):</label>
+                    <textarea id="notas" rows="4"></textarea>
+                </div>
+                <div class="total-section grid-col-4">
+                    <div class="total-row">
+                        <span>Subtotal ventas</span>
+                        <strong>$34,225.00</strong>
+                    </div>
+                    <div class="total-row">
+                        <span>Impuestos</span>
+                        <strong>$5,476.00</strong>
+                    </div>
+                    <div class="total-row grand-total">
+                        <span>Total de ventas</span>
+                        <strong>$39,701.00</strong>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-footer">
+                <button class="btn btn-cancel">Cancelar</button>
+                <button class="btn btn-success">Siguiente</button>
+            </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Ventas Tab -->
+    <div class="content-wrapper" *ngIf="activeTab === 'punto-de-venta'">
+      <div class="card">
+        <div class="card-body">
+          <div class="ventas-header">
+            <div class="filters">
+              <button class="filter-btn">General</button>
+              <button class="filter-btn">Vendedor</button>
+              <button class="filter-btn">Forma de pago</button>
+              <button class="filter-btn">Estatus</button>
+              <button class="filter-btn">Medio de pago</button>
+              <div class="date-range">
+                  <input type="date" value="2025-06-10">
+                  <input type="date" value="2025-06-10">
+              </div>
+            </div>
+            <div class="search-box">
+                <input type="text" placeholder="Hinted search text">
+                <span class="material-symbols-outlined">search</span>
+            </div>
+          </div>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Folio</th>
+                <th>Sucursal</th>
+                <th>Dirección</th>
+                <th>Fecha</th>
+                <th>Vendedor</th>
+                <th>Forma de pago</th>
+                <th>Pagos</th>
+                <th>Estatus</th>
+                <th>Medio de pago</th>
+                <th>Monto</th>
+                <th>Acción</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>S05892506</td>
+                <td>CDMX</td>
+                <td>PRIVADA UNIÓN 10, COL. AGRICOLA PANTITLAN, IZTACALCO, 08100, CIUDAD DE MEXICO, CDMX, MEXICO.</td>
+                <td>22/05/2025</td>
+                <td>J. Herrera</td>
+                <td>PUE</td>
+                <td>1/1</td>
+                <td><span class="status pagada">Pagada</span></td>
+                <td>T débito</td>
+                <td>$6,000</td>
+                <td class="actions">
+                  <button class="btn-icon"><span class="material-symbols-outlined">visibility</span></button>
+                  <button class="btn-icon"><span class="material-symbols-outlined">print</span></button>
+                  <button class="btn-icon"><span class="material-symbols-outlined">more_vert</span></button>
+                </td>
+              </tr>
+               <tr>
+                <td>S05892506</td>
+                <td>CDMX</td>
+                <td>PRIVADA UNIÓN 10, COL. AGRICOLA PANTITLAN, IZTACALCO, 08100, CIUDAD DE MEXICO, CDMX, MEXICO.</td>
+                <td>26/05/2025</td>
+                <td>J. Herrera</td>
+                <td>PPD</td>
+                <td>1/3</td>
+                <td><span class="status pendiente">Pendiente de pago</span></td>
+                <td>Efectivo</td>
+                <td>$5,000</td>
+                <td class="actions">
+                  <button class="btn-icon"><span class="material-symbols-outlined">visibility</span></button>
+                  <button class="btn-icon"><span class="material-symbols-outlined">print</span></button>
+                  <button class="btn-icon"><span class="material-symbols-outlined">more_vert</span></button>
+                </td>
+              </tr>
+               <tr>
+                <td>S05892506</td>
+                <td>CDMX</td>
+                <td>PRIVADA UNIÓN 10, COL. AGRICOLA PANTITLAN, IZTACALCO, 08100, CIUDAD DE MEXICO, CDMX, MEXICO.</td>
+                <td>26/05/2025</td>
+                <td>C. Gómez</td>
+                <td>PPD</td>
+                <td>3/3</td>
+                <td><span class="status pagada">Pagada</span></td>
+                <td>Efectivo</td>
+                <td>$15,000</td>
+                <td class="actions">
+                  <button class="btn-icon"><span class="material-symbols-outlined">visibility</span></button>
+                  <button class="btn-icon"><span class="material-symbols-outlined">print</span></button>
+                  <button class="btn-icon"><span class="material-symbols-outlined">more_vert</span></button>
+                </td>
+              </tr>
+               <tr>
+                <td>S05892506</td>
+                <td>CDMX</td>
+                <td>PRIVADA UNIÓN 10, COL. AGRICOLA PANTITLAN, IZTACALCO, 08100, CIUDAD DE MEXICO, CDMX, MEXICO.</td>
+                <td>29/05/2025</td>
+                <td>P. Aguirre</td>
+                <td>PUE</td>
+                <td>1/1</td>
+                <td><span class="status facturada">Facturada</span></td>
+                <td>T crédito</td>
+                <td>$6,000</td>
+                <td class="actions">
+                  <button class="btn-icon"><span class="material-symbols-outlined">visibility</span></button>
+                  <button class="btn-icon"><span class="material-symbols-outlined">print</span></button>
+                  <button class="btn-icon"><span class="material-symbols-outlined">more_vert</span></button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Historial de Ventas Tab -->
+    <div class="content-wrapper" *ngIf="activeTab === 'historial'">
+       <div class="card">
+        <div class="card-body">
+          <div class="ventas-header">
+            <div class="filters">
+              <button class="filter-btn">General</button>
+              <button class="filter-btn">Vendedor</button>
+              <button class="filter-btn">Forma de pago</button>
+              <button class="filter-btn">Estatus</button>
+              <button class="filter-btn">Medio de pago</button>
+              <div class="date-range">
+                  <input type="date" value="2025-06-10">
+                  <input type="date" value="2025-06-10">
+              </div>
+            </div>
+            <div class="search-box">
+                <input type="text" placeholder="Hinted search text">
+                <span class="material-symbols-outlined">search</span>
+            </div>
+          </div>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Folio</th>
+                <th>Sucursal</th>
+                <th>Dirección</th>
+                <th>Fecha</th>
+                <th>Vendedor</th>
+                <th>Forma de pago</th>
+                <th>Pagos</th>
+                <th>Estatus</th>
+                <th>Medio de pago</th>
+                <th>Monto</th>
+                <th>Acción</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>S05892506</td>
+                <td>CDMX</td>
+                <td>PRIVADA UNIÓN 10, COL. AGRICOLA PANTITLAN, IZTACALCO, 08100, CIUDAD DE MEXICO, CDMX, MEXICO.</td>
+                <td>22/05/2025</td>
+                <td>J. Herrera</td>
+                <td>PUE</td>
+                <td>1/1</td>
+                <td><span class="status pagada">Pagada</span></td>
+                <td>T débito</td>
+                <td>$6,000</td>
+                <td class="actions">
+                  <button class="btn-icon"><span class="material-symbols-outlined">visibility</span></button>
+                  <button class="btn-icon"><span class="material-symbols-outlined">print</span></button>
+                  <button class="btn-icon"><span class="material-symbols-outlined">more_vert</span></button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
