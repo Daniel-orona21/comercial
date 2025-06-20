@@ -1,5 +1,9 @@
 @use '../../../colores.scss' as *;
 
+.disabled {
+    pointer-events: none;
+}
+
 .contenido {
     user-select: none;
     height: 100vh;

@@ -7,22 +7,22 @@
             
             <!-- Admin menu items -->
             <ng-container *ngIf="currentRole === 'admin'">
-                <li [routerLink]="['dashboard']" routerLinkActive="activo"><span class="material-symbols-outlined">analytics</span><h3>Dashboard</h3></li>
+                <li class="disabled" [routerLink]="['dashboard']" routerLinkActive="activo"><span class="material-symbols-outlined">analytics</span><h3>Dashboard</h3></li>
                 <li [routerLink]="['usuarios']" routerLinkActive="activo"><span class="material-symbols-outlined">contacts_product</span><h3>Usuarios</h3></li>
                 <li [routerLink]="['roles']" routerLinkActive="activo"><span class="material-symbols-outlined">assignment_ind</span><h3>Roles y permisos</h3></li>
-                <li [routerLink]="['proveedores']" routerLinkActive="activo"><span class="material-symbols-outlined">contacts_product</span><h3>Proveedores</h3></li>
-                <li [routerLink]="['sucursales']" routerLinkActive="activo"><span class="material-symbols-outlined">home</span><h3>Sucursales</h3></li>
-                <li [routerLink]="['almacenes']" routerLinkActive="activo"><span class="material-symbols-outlined">deployed_code</span><h3>Almacenes</h3></li>
-                <li [routerLink]="['categorias']" routerLinkActive="activo"><span class="material-symbols-outlined">category</span><h3>Categorías</h3></li>
+                <li class="disabled" [routerLink]="['proveedores']" routerLinkActive="activo"><span class="material-symbols-outlined">contacts_product</span><h3>Proveedores</h3></li>
+                <li class="disabled" [routerLink]="['sucursales']" routerLinkActive="activo"><span class="material-symbols-outlined">home</span><h3>Sucursales</h3></li>
+                <li class="disabled" [routerLink]="['almacenes']" routerLinkActive="activo"><span class="material-symbols-outlined">deployed_code</span><h3>Almacenes</h3></li>
+                <li class="disabled" [routerLink]="['categorias']" routerLinkActive="activo"><span class="material-symbols-outlined">category</span><h3>Categorías</h3></li>
                 <li [routerLink]="['productos']" routerLinkActive="activo"><span class="material-symbols-outlined">shopping_bag</span><h3>Productos</h3></li>
-                <li [routerLink]="['servicios']" routerLinkActive="activo"><span class="material-symbols-outlined">contact_mail</span><h3>Servicios</h3></li>
-                <li [routerLink]="['paquetes']" routerLinkActive="activo"><span class="material-symbols-outlined">inventory_2</span><h3>Paquetes</h3></li>
-                <li [routerLink]="['descuentos']" routerLinkActive="activo"><span class="material-symbols-outlined">sell</span><h3>Descuentos</h3></li>
+                <li class="disabled" [routerLink]="['servicios']" routerLinkActive="activo"><span class="material-symbols-outlined">contact_mail</span><h3>Servicios</h3></li>
+                <li class="disabled" [routerLink]="['paquetes']" routerLinkActive="activo"><span class="material-symbols-outlined">inventory_2</span><h3>Paquetes</h3></li>
+                <li class="disabled" [routerLink]="['descuentos']" routerLinkActive="activo"><span class="material-symbols-outlined">sell</span><h3>Descuentos</h3></li>
                 <li [routerLink]="['inventario']" routerLinkActive="activo"><span class="material-symbols-outlined">barcode_reader</span><h3>Inventario</h3></li>
                 <li [routerLink]="['pagos']" routerLinkActive="activo"><span class="material-symbols-outlined">price_change</span><h3>Pagos</h3></li>
                 <li [routerLink]="['ordenes']" routerLinkActive="activo"><span class="material-symbols-outlined">add_business</span><h3>Ordenes de compra</h3></li>
-                <li [routerLink]="['facturacion']" routerLinkActive="activo"><span class="material-symbols-outlined">request_page</span><h3>Facturación</h3></li>
-                <li [routerLink]="['reportes']" routerLinkActive="activo"><span class="material-symbols-outlined">breaking_news_alt_1</span><h3>Reportes</h3></li>
+                <li class="disabled" [routerLink]="['facturacion']" routerLinkActive="activo"><span class="material-symbols-outlined">request_page</span><h3>Facturación</h3></li>
+                <li class="disabled" [routerLink]="['reportes']" routerLinkActive="activo"><span class="material-symbols-outlined">breaking_news_alt_1</span><h3>Reportes</h3></li>
             </ng-container>
 
             <!-- Director menu items -->
@@ -31,10 +31,10 @@
                 <li [routerLink]="['clientes']" routerLinkActive="activo"><span class="material-symbols-outlined">contacts_product</span><h3>Clientes</h3></li>
                 <li [routerLink]="['expediente']" routerLinkActive="activo"><span class="material-symbols-outlined">assignment_ind</span><h3>Expedientes</h3></li>
                 <li [routerLink]="['puntos-de-venta']" routerLinkActive="activo"><span class="material-symbols-outlined">currency_exchange</span><h3>Puntos de venta</h3></li>
-                <li [routerLink]="['comisiones']" routerLinkActive="activo"><span class="material-symbols-outlined">local_atm</span><h3>Comisiones</h3></li>
-                <li [routerLink]="['notas-de-credito']" routerLinkActive="activo"><span class="material-symbols-outlined">credit_card_clock</span><h3>Notas de crédito</h3></li>
-                <li [routerLink]="['descuentos-y-promociones']" routerLinkActive="activo"><span class="material-symbols-outlined">content_paste_search</span><h3>Descuentos y promociones</h3></li>
-                <li [routerLink]="['facturas']" routerLinkActive="activo"><span class="material-symbols-outlined">request_page</span><h3>Facturas</h3></li>
+                <li class="disabled" [routerLink]="['comisiones']" routerLinkActive="activo"><span class="material-symbols-outlined">local_atm</span><h3>Comisiones</h3></li>
+                <li class="disabled" [routerLink]="['notas-de-credito']" routerLinkActive="activo"><span class="material-symbols-outlined">credit_card_clock</span><h3>Notas de crédito</h3></li>
+                <li class="disabled" [routerLink]="['descuentos-y-promociones']" routerLinkActive="activo"><span class="material-symbols-outlined">content_paste_search</span><h3>Descuentos y promociones</h3></li>
+                <li class="disabled" [routerLink]="['facturas']" routerLinkActive="activo"><span class="material-symbols-outlined">request_page</span><h3>Facturas</h3></li>
             </ng-container>
         </ul>
     </nav>
